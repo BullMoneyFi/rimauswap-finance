@@ -10,6 +10,7 @@ import { usePollCoreFarmData } from 'state/farms/hooks'
 // import { useFetchProfile } from 'state/profile/hooks'
 import { DatePickerPortal } from 'components/DatePicker'
 import Info from './views/Info'
+import Zap from './views/Zap'
 import GlobalStyle from './style/Global'
 import Menu from './components/Menu'
 import SuspenseWithChunkError from './components/SuspenseWithChunkError'
@@ -92,6 +93,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/info">
               <Info />
+            </Route>
+            <Route path="/zap">
+              <Zap />
             </Route>
             {/* <Route path="/lottery">
               <Lottery />

@@ -75,6 +75,7 @@ interface CurrencyInputPanelProps {
   hideBalance?: boolean
   pair?: Pair | null
   hideInput?: boolean
+  inputDisabled?: boolean
   otherCurrency?: Currency | null
   id: string
   showCommonBases?: boolean
@@ -92,6 +93,7 @@ export default function CurrencyInputPanel({
   hideBalance = false,
   pair = null, // used for double token logo
   hideInput = false,
+  inputDisabled = false,
   otherCurrency,
   id,
   showCommonBases,
@@ -136,6 +138,7 @@ export default function CurrencyInputPanel({
                 isSwap={isSwap}
                 className="token-amount-input"
                 value={value}
+                disabled = { inputDisabled }
                 onUserInput={(val) => {
                   onUserInput(val)
                 }}
@@ -196,6 +199,7 @@ export default function CurrencyInputPanel({
                 isSwap={isSwap}
                 className="token-amount-input"
                 value={value}
+                disabled = { inputDisabled }
                 onUserInput={(val) => {
                   onUserInput(val)
                 }}
@@ -215,6 +219,7 @@ export default function CurrencyInputPanel({
               }
               <NumericalInput
                 isSwap={isSwap}
+                disabled = { inputDisabled }
                 className="token-amount-input"
                 value={value}
                 onUserInput={(val) => {
