@@ -38,9 +38,9 @@ export const earnSectionData: SalesSectionProps = {
   },
 }
 export const cakeSectionData: SalesSectionProps = {
-  headingText: 'Support sustainable Environment, Social and Governance (ESG) for Malaysians Benefitting Malaysians.',
+  headingText: 'Support sustainable Environment, Social and Governance (ESG).',
   bodyText:
-    'Be part of an ecosystem designed to fund sustainable contributions to the Malaysian communities through DeFi yield farming.',
+    'Be part of an ecosystem designed to fund sustainable contributions to the communities through DeFi yield farming.',
   reverse: true,
   primaryButton: {
     to: '/swap',

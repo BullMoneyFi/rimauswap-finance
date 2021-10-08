@@ -101,7 +101,7 @@ const Hero = () => {
             {t('Switch over to RimauSwap. Let’s show the world DeFi can do good.')}
           </Heading>
           <Text textAlign="left" fontSize="16px" style={{opacity:0.5}} color="textSubtle" mb="20px">
-            {t('Support the first Malaysian DEX Built For Global Crypto Markets in a sustainable manner through DeFi yield farming.')}
+            {t('DEX Built For Global Crypto Markets in a sustainable manner through DeFi yield farming.')}
           </Text>
           <Flex flexDirection={['column', null, 'row', null]}>
             {!account && <ConnectWalletButton />}

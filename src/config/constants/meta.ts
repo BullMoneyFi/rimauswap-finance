@@ -4,7 +4,7 @@ import { PageMeta } from './types'
 export const DEFAULT_META: PageMeta = {
   title: 'RimauSwap (BSC)',
   description:
-    'RimauSwap - First Malaysian DEX Built For Global Crypto Markets via Sustainable ESG. Earn RIMAU through yield farming, then stake it in Syrup Pools to earn more tokens!.',
+    'RimauSwap - DEX Built For Global Crypto Communities via Sustainable ESG. Earn RIMAU through yield farming, then stake it in Syrup Pools to earn more tokens!.',
   image: 'https://rimauswap.finance/images/hero.png',
 }
 
