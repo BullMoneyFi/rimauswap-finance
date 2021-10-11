@@ -130,3 +130,85 @@ export const LabelWrapper = styled.div`
     align-items: center;
   }
 `
+export const ZapPollSection = styled.div` 
+  display: flex;
+  padding: 12px 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: ${({ theme }) => `1px solid ${theme.colors.textSubtle}1a`};
+`
+export const ZapPollRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 16px;
+`
+export const ZapPollCol = styled.div`
+  &.text-left{
+    text-align:left;
+    span{
+      align-items: center;
+      display: flex;
+      font-size: 14px;
+      font-weight: 300;
+      svg{
+        margin-left:10px;
+      }
+      button{
+        padding: 0;
+        height: 20px;
+        margin-right: 20px;
+        color:${({ theme }) => `${theme.colors.textSubtle}`};
+        &.active{
+          color:${({ theme }) => `${theme.colors.primary}`};
+        }
+      }
+    }
+  }
+  &.text-center{
+    text-align:center;
+    span{
+      align-items: center;
+      display: flex;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  &.text-right{
+    text-align:right;
+    span{
+      align-items: center;
+      display: flex;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    a{
+      text-decoration:underline;
+      font-size: 13px;
+      font-weight: 400;
+    }
+  }
+`
+
+export const InputRow = styled.div<{ selected: boolean }>`
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 50px;
+  padding: 0;
+  overflow: hidden;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  ${({ theme }) => theme.mediaQueries.sm} {
+    flex-flow: row nowrap;
+    flex-direction: row;
+  }
+`
+
+export const MaxButton = styled.div`
+  width: 70px;
+  text-align: right;
+`

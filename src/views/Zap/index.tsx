@@ -15,7 +15,7 @@ const Info: React.FC = () => {
       <Route path={['/zap/pools', '/zap/pool']} exact>
         <ZapPools />
       </Route>
-      <Route exact path="/info/pool/:address" component={ZapPoolDetail} />
+      <Route exact path={['/zap/pools/:address', '/zap/pool/:address']} component={ZapPoolDetail} />
     </Page>
   )
 }
