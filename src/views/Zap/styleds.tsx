@@ -40,6 +40,14 @@ export const LinkWrapper = styled(Link)`
   }
 `
 
+export const DirectZap = styled(Card)`
+  padding:20px;
+  background:${({ theme }) => theme.colors.background};
+  h3{
+    margin-bottom:10px;
+  }
+`
+
 export const PoolRowGrid = styled(Card)`
   display: flex;
   flex-direction: row;

@@ -14,7 +14,7 @@ import useActiveWeb3React from '../../../../hooks/useActiveWeb3React'
 import { useCurrency, useAllTokens } from '../../../../hooks/Tokens'
 import useWrapCallback, { WrapType } from '../../../../hooks/useWrapCallback'
 import { Field } from '../../../../state/swap/actions'
-import { StyledHeader, Wrapper, ZapPollSection, ZapPollRow, ZapPollCol, MaxButton, InputRow } from '../../styleds'
+import { StyledHeader, Wrapper, DirectZap, ZapPollSection, ZapPollRow, ZapPollCol, MaxButton, InputRow } from '../../styleds'
 import { Input as NumericalInput } from '../../../../components/CurrencyInputPanel/NumericalInput'
 
 import {
@@ -171,6 +171,11 @@ const ZapPoolDetail: React.FC = () => {
 
   return (
     <Page>
+      <DirectZap>
+        <Heading as="h3">Step 1. Get BUNNY-BNB LP tokens</Heading>
+        <Text>BUNNY-BNB LP tokens are required. Once you have added liquidity to the PancakeSwap BUNNY-BNB LP pool you can deposit your liquidity tokens on this page.</Text>
+        <Button style={{marginTop:20, marginBottom:10}} scale="md" variant="primary" >Direct Zap</Button>
+      </DirectZap>
       <StyledHeader>
         <Heading as="h1" fontSize="18px !important" scale="md">
           {t('Auto-Compounding Performance fee to RIMAU')}

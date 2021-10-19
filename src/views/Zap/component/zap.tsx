@@ -1,13 +1,22 @@
 import React, { useCallback, useEffect, useMemo, useState  } from 'react'
-import { CurrencyAmount, Token } from '@rimauswap-sdk/sdk'
+import { CurrencyAmount, JSBI, Token, Trade } from '@rimauswap-sdk/sdk'
 import { Button, Text, ArrowDownIcon, Box, Heading, useModal, useMatchBreakpoints } from '@rimauswap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
+import { useIsTransactionUnsupported } from 'hooks/Trades'
+import { useHistory } from 'react-router-dom'
 import SwapWarningTokens from 'config/constants/swapWarningTokens'
+import { ApprovalState, useApproveCallbackFromTrade } from 'hooks/useApproveCallback'
+import { computeTradePriceBreakdown, warningSeverity } from 'utils/prices'
 import { getAddress } from 'utils/addressHelpers'
+import CircleLoader from 'components/Loader/CircleLoader'
+import { GreyCard } from 'components/Card'
+import { useSwapCallback } from 'hooks/useSwapCallback'
 import SwapWarningModal from 'views/Swap/components/SwapWarningModal'
+import ImportTokenWarningModal from 'views/Swap/components/ImportTokenWarningModal'
 import { AutoColumn } from '../../../components/Layout/Column'
-import CurrencyInputPanel from '../../../components/CurrencyInputPanel'
-import { AutoRow } from '../../../components/Layout/Row'
+import CurrencyInputZap from '../../../components/CurrencyInputZap'
+import { AutoRow, RowBetween } from '../../../components/Layout/Row'
+import confirmPriceImpactWithoutFee from './confirmPriceImpactWithoutFee'
 import ConnectWalletButton from '../../../components/ConnectWalletButton'
 import useActiveWeb3React from '../../../hooks/useActiveWeb3React'
 import { useCurrency, useAllTokens } from '../../../hooks/Tokens'
@@ -20,17 +29,14 @@ import {
   useSwapActionHandlers,
   useSwapState,
 } from '../../../state/swap/hooks'
-import { useExpertModeManager } from '../../../state/user/hooks'
+import { useExpertModeManager, useUserSlippageTolerance, useUserSingleHopOnly } from '../../../state/user/hooks'
 import { maxAmountSpend } from '../../../utils/maxAmountSpend'
 import Page from '../../Page'
 
 
-
-
-
 const Zap: React.FC = () => {
   const loadedUrlParams = useDefaultsFromURLSearch()
-
+  const history = useHistory();
   const { t } = useTranslation()
   const { isXl } = useMatchBreakpoints()
   const isMobile = !isXl
@@ -54,16 +60,22 @@ const Zap: React.FC = () => {
 
   const { account } = useActiveWeb3React()
 
+  // get custom setting values for user
+  const [allowedSlippage] = useUserSlippageTolerance()
+  // swap state
+  const { independentField, typedValue, recipient } = useSwapState()
+  const { v2Trade, currencyBalances, parsedAmount, currencies, inputError: swapInputError } = useDerivedSwapInfo()
+
   // for expert mode
   const [isExpertMode] = useExpertModeManager()
 
-  // swap state
-  const { independentField, typedValue, recipient } = useSwapState()
-  const { v2Trade, currencyBalances, parsedAmount, currencies } = useDerivedSwapInfo()
 
   const {
     wrapType,
+    execute: onWrap,
+    inputError: wrapInputError,
   } = useWrapCallback(currencies[Field.INPUT], currencies[Field.OUTPUT], typedValue)
+
   const showWrap: boolean = wrapType !== WrapType.NOT_APPLICABLE
   const trade = showWrap ? undefined : v2Trade
 
@@ -78,6 +90,7 @@ const Zap: React.FC = () => {
       }
 
   const { onSwitchTokens, onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
+  const isValid = !swapInputError
   const dependentField: Field = independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT
 
   const handleTypeInput = useCallback(
@@ -93,6 +106,19 @@ const Zap: React.FC = () => {
     [onUserInput],
   )
 
+  // modal and loading
+  const [{ tradeToConfirm, swapErrorMessage, attemptingTxn, txHash }, setSwapState] = useState<{
+    tradeToConfirm: Trade | undefined
+    attemptingTxn: boolean
+    swapErrorMessage: string | undefined
+    txHash: string | undefined
+  }>({
+    tradeToConfirm: undefined,
+    attemptingTxn: false,
+    swapErrorMessage: undefined,
+    txHash: undefined,
+  })
+
   const formattedAmounts = {
     [independentField]: typedValue,
     [dependentField]: showWrap
@@ -100,12 +126,38 @@ const Zap: React.FC = () => {
       : parsedAmounts[dependentField]?.toSignificant(6) ?? '',
   }  
   
-  const maxAmountInput: CurrencyAmount | undefined = maxAmountSpend(currencyBalances[Field.INPUT])
-  const atMaxAmountInput = Boolean(maxAmountInput && parsedAmounts[Field.INPUT]?.equalTo(maxAmountInput))
-
   // swap warning state
   const [swapWarningCurrency, setSwapWarningCurrency] = useState(null)
   const [onPresentSwapWarningModal] = useModal(<SwapWarningModal swapCurrency={swapWarningCurrency} />)
+
+  const route = trade?.route
+  const userHasSpecifiedInputOutput = Boolean(
+    currencies[Field.INPUT] && currencies[Field.OUTPUT] && parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0)),
+  )
+  const noRoute = !route
+
+  // check whether the user has approved the router on the input token
+  const [approval, approveCallback] = useApproveCallbackFromTrade(trade, allowedSlippage)
+
+  // check if user has gone through approval process, used to show two step buttons, reset on token change
+  const [approvalSubmitted, setApprovalSubmitted] = useState<boolean>(false)
+
+  // mark when a user has submitted an approval, reset onTokenSelection for input field
+  useEffect(() => {
+    if (approval === ApprovalState.PENDING) {
+      setApprovalSubmitted(true)
+    }
+  }, [approval, approvalSubmitted])
+
+  const maxAmountInput: CurrencyAmount | undefined = maxAmountSpend(currencyBalances[Field.INPUT])
+  const atMaxAmountInput = Boolean(maxAmountInput && parsedAmounts[Field.INPUT]?.equalTo(maxAmountInput))
+
+  // the callback to execute the swap
+  const { callback: swapCallback, error: swapCallbackError } = useSwapCallback(trade, allowedSlippage, recipient)
+
+  const { priceImpactWithoutFee } = computeTradePriceBreakdown(trade)
+
+  const [singleHopOnly] = useUserSingleHopOnly()
 
   const shouldShowSwapWarning = (swapCurrency) => {
     const isWarningToken = Object.entries(SwapWarningTokens).find((warningTokenConfig) => {
@@ -115,6 +167,7 @@ const Zap: React.FC = () => {
     })
     return Boolean(isWarningToken)
   }
+  
 
   useEffect(() => {
     if (swapWarningCurrency) {
@@ -156,14 +209,54 @@ const Zap: React.FC = () => {
     [onCurrencySelection],
   )
 
-  // const [onPresentImportTokenWarningModal] = useModal(
-  //   <ImportTokenWarningModal tokens={importTokensNotInDefault} onCancel={() => history.push('/swap/')} />,
-  // )
+  const swapIsUnsupported = useIsTransactionUnsupported(currencies?.INPUT, currencies?.OUTPUT)
+
+  const [onPresentImportTokenWarningModal] = useModal(
+    <ImportTokenWarningModal tokens={importTokensNotInDefault} onCancel={() => history.push('/swap/')} />,
+  )
+
+  const handleSwap = useCallback(() => {
+    if (priceImpactWithoutFee && !confirmPriceImpactWithoutFee(priceImpactWithoutFee)) {
+      return
+    }
+    if (!swapCallback) {
+      return
+    }
+    setSwapState({ attemptingTxn: true, tradeToConfirm, swapErrorMessage: undefined, txHash: undefined })
+    swapCallback()
+      .then((hash) => {
+        setSwapState({ attemptingTxn: false, tradeToConfirm, swapErrorMessage: undefined, txHash: hash })
+      })
+      .catch((error) => {
+        setSwapState({
+          attemptingTxn: false,
+          tradeToConfirm,
+          swapErrorMessage: error.message,
+          txHash: undefined,
+        })
+      })
+  }, [priceImpactWithoutFee, swapCallback, tradeToConfirm])
+
+
+  // errors
+  const [showInverted, setShowInverted] = useState<boolean>(false)
+
+  // warnings on slippage
+  const priceImpactSeverity = warningSeverity(priceImpactWithoutFee)
+
+  // show approve flow when: no error on inputs, not approved or pending, or approved in current session
+  // never show if price impact is above threshold in non expert mode
+  const showApproveFlow =
+    !swapInputError &&
+    (approval === ApprovalState.NOT_APPROVED ||
+      approval === ApprovalState.PENDING ||
+      (approvalSubmitted && approval === ApprovalState.APPROVED)) &&
+    !(priceImpactSeverity > 3 && !isExpertMode)
 
   useEffect(() => {
-    // if (importTokensNotInDefault.length > 0) {
-    //   onPresentImportTokenWarningModal()
-    // }
+    if (importTokensNotInDefault.length > 0) {
+      onPresentImportTokenWarningModal()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [importTokensNotInDefault.length])
 
@@ -180,7 +273,7 @@ const Zap: React.FC = () => {
       </StyledHeader>
       <Wrapper id="swap-page">
         <AutoColumn gap={isMobile?'sm':'md'}>
-          <CurrencyInputPanel
+          <CurrencyInputZap
             isSwap={isShow}
             label={ t('From')}
             value={formattedAmounts[Field.INPUT]}
@@ -210,7 +303,7 @@ const Zap: React.FC = () => {
               ) : null}
             </AutoRow>
           </AutoColumn>
-          <CurrencyInputPanel
+          <CurrencyInputZap
             isSwap={isShow}
             value={formattedAmounts[Field.OUTPUT]}
             onUserInput={handleTypeOutput}
@@ -224,7 +317,79 @@ const Zap: React.FC = () => {
           />
         </AutoColumn>
         <Box mt="1rem">
-          {
+        {swapIsUnsupported ? (
+              <Button width="100%" disabled mb="4px">
+                {t('Unsupported Asset')}
+              </Button>
+            ) : !account ? (
+              <ConnectWalletButton width="100%" />
+            ) : showWrap ? (
+              <Button width="100%" disabled={Boolean(wrapInputError)} onClick={onWrap}>
+                {wrapInputError ??
+                  (wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
+              </Button>
+            ) : noRoute && userHasSpecifiedInputOutput ? (
+              <GreyCard style={{ textAlign: 'center' }}>
+                <Text color="textSubtle" mb="4px">
+                  {t('Insufficient liquidity for this trade.')}
+                </Text>
+                {singleHopOnly && (
+                  <Text color="textSubtle" mb="4px">
+                    {t('Try enabling multi-hop trades.')}
+                  </Text>
+                )}
+              </GreyCard>
+            ) : showApproveFlow ? (
+              <RowBetween>
+                <Button
+                  variant={approval === ApprovalState.APPROVED ? 'success' : 'primary'}
+                  onClick={approveCallback}
+                  disabled={approval !== ApprovalState.NOT_APPROVED || approvalSubmitted}
+                  width="48%"
+                >
+                  {approval === ApprovalState.PENDING ? (
+                    <AutoRow gap="6px" justify="center">
+                      {t('Enabling')} <CircleLoader stroke="white" />
+                    </AutoRow>
+                  ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
+                    t('Enabled')
+                  ) : (
+                    t('Enable %asset%', { asset: currencies[Field.INPUT]?.symbol ?? '' })
+                  )}
+                </Button>
+                <Button
+                  variant={isValid && priceImpactSeverity > 2 ? 'danger' : 'primary'}
+                  onClick={() => handleSwap()}
+                  width="48%"
+                  id="swap-button"
+                  disabled={
+                    !isValid || approval !== ApprovalState.APPROVED || (priceImpactSeverity > 3 && !isExpertMode)
+                  }
+                >
+                  {priceImpactSeverity > 3 && !isExpertMode
+                    ? t('Price Impact High')
+                    : priceImpactSeverity > 2
+                    ? t('Swap Anyway')
+                    : t('Swap')}
+                </Button>
+              </RowBetween>
+            ) : (
+              <Button
+                variant={isValid && priceImpactSeverity > 2 && !swapCallbackError ? 'danger' : 'primary'}
+                onClick={() => handleSwap()}
+                id="swap-button"
+                width="100%"
+                disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}
+              >
+                {swapInputError ||
+                  (priceImpactSeverity > 3 && !isExpertMode
+                    ? `Price Impact Too High`
+                    : priceImpactSeverity > 2
+                    ? t('Swap Anyway')
+                    : t('Swap'))}
+              </Button>
+            )}
+          {/* {
             !account ? (
               <ConnectWalletButton width="100%" />
             ):<Button
@@ -232,10 +397,10 @@ const Zap: React.FC = () => {
               // onClick={approveCallback}
               // disabled={approval !== ApprovalState.NOT_APPROVED || approvalSubmitted}
               width="100%"
-            >
+              onClick={() => handleSwap() }>
               {t('zap')}
             </Button>
-          }
+          } */}
         </Box>
       </Wrapper>
     </Page>
