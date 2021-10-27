@@ -2,6 +2,7 @@ import React from 'react'
 import { Flex, Text, useMatchBreakpoints } from '@rimauswap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import styled from 'styled-components'
+import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain'
 
 
 const BannerMain = styled.div`
@@ -55,7 +56,7 @@ const Farmstitle = () => {
   const { isXs, isSm, isMd } = useMatchBreakpoints()
  
   const getLink = (currentLang) =>{
-    return currentLang === 'en' ? 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau' : currentLang === 'zh-cn' ? 'https://docs-zh.rimauswap.finance/products/rimau-yield-farming' : currentLang === 'my' || currentLang === 'id' ? 'https://docs-bm.rimauswap.finance/produks/berladang-farming' : 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau'
+    return currentLang === 'en' ? getExternalLinkWithDomain('https://docs-en.rimauswap.finance/products/how-to-farm-rimau', 'rimauswap.finance', false) : currentLang === 'zh-cn' ? getExternalLinkWithDomain('https://docs-zh.rimauswap.finance/products/rimau-yield-farming', 'rimauswap.finance', false) : currentLang === 'my' || currentLang === 'id' ? getExternalLinkWithDomain('https://docs-bm.rimauswap.finance/produks/berladang-farming', 'rimauswap.finance', false) : getExternalLinkWithDomain('https://docs-en.rimauswap.finance/products/how-to-farm-rimau', 'rimauswap.finance', false)
    }
 
   return (

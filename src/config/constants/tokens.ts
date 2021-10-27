@@ -89,7 +89,7 @@ const tokens = {
       97: '',
     },
     decimals: 18,
-    projectLink: 'https://rimauswap.finance/',
+    projectLink: window.location.origin,
   },
   cake: {
     symbol: 'CAKE',
@@ -782,7 +782,7 @@ const tokens = {
       97: '0xfE1e507CeB712BDe086f3579d2c03248b2dB77f9',
     },
     decimals: 18,
-    projectLink: 'https://rimauswap.finance/',
+    projectLink: window.location.origin,
   },
   bifi: {
     symbol: 'BIFI',

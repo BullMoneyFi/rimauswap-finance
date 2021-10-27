@@ -38,6 +38,7 @@ import { useWatchlistTokens } from 'state/user/hooks'
 import { ONE_HOUR_SECONDS } from 'config/constants/info'
 import { useTranslation } from 'contexts/Localization'
 import ChartCard from 'views/Info/components/InfoCharts/ChartCard'
+import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain'
 
 const ContentLayout = styled.div`
   margin-top: 16px;
@@ -117,7 +118,7 @@ const TokenPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                 {t('No pool has been created with this token yet. Create one')}
                 <LinkExternal
                   style={{ display: 'inline', marginLeft: '6px' }}
-                  href={`https://rimauswap.finance/add/${address}`}
+                  href={ getExternalLinkWithDomain(`https://rimauswap.finance/add/${address}`, '', true) }
                 >
                   {t('here.')}
                 </LinkExternal>
@@ -171,12 +172,12 @@ const TokenPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                 </Flex>
               </Flex>
               <Flex>
-                <a href={`https://rimauswap.finance/add/${address}`}>
+                <a href={ getExternalLinkWithDomain(`https://rimauswap.finance/add/${address}`, '', true) }>
                   <Button mr="8px" variant="secondary">
                     {t('Add Liquidity')}
                   </Button>
                 </a>
-                <a href={`https://rimauswap.finance/swap?inputCurrency=${address}`}>
+                <a href={ getExternalLinkWithDomain(`https://rimauswap.finance/swap?inputCurrency=${address}`, '', true) }>
                   <Button>{t('Trade')}</Button>
                 </a>
               </Flex>

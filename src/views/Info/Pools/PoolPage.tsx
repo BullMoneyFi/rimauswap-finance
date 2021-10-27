@@ -29,6 +29,7 @@ import TransactionTable from 'views/Info/components/InfoTables/TransactionsTable
 import { useWatchlistPools } from 'state/user/hooks'
 import { useTranslation } from 'contexts/Localization'
 import ChartCard from 'views/Info/components/InfoCharts/ChartCard'
+import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain'
 
 const ContentLayout = styled.div`
   display: grid;
@@ -150,14 +151,14 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
               </Flex>
               <Flex>
                 <a
-                  href={`https://rimauswap.finance/add/${poolData.token0.address}/${poolData.token1.address}`}
+                  href={ getExternalLinkWithDomain(`https://rimauswap.finance/add/${poolData.token0.address}/${poolData.token1.address}`, '', true) }
                 >
                   <Button mr="8px" variant="secondary">
                     {t('Add Liquidity')}
                   </Button>
                 </a>
                 <a
-                  href={`https://rimauswap.finance/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
+                  href={ getExternalLinkWithDomain(`https://rimauswap.finance/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`, '', true) }
                 >
                   <Button>{t('Trade')}</Button>
                 </a>

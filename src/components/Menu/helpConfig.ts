@@ -1,5 +1,6 @@
 import { MenuEntry } from '@rimauswap-libs/uikit'
 import { ContextApi } from 'contexts/Localization/types'
+import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain';
 
 const helps: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   {
@@ -10,12 +11,12 @@ const helps: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   {
     label: t("How to farm"),
     icon: "FarmsIcon",
-    href: 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau',
+    href: getExternalLinkWithDomain('https://docs-en.rimauswap.finance/products/how-to-farm-rimau', 'rimauswap.finance', false),
   },
   {
     label: t("Help"),
     icon: "QuestionIcon",
-    href: 'https://docs-en.rimauswap.finance/how-to-guides/how-to-get-rimau',
+    href: getExternalLinkWithDomain('https://docs-en.rimauswap.finance/how-to-guides/how-to-get-rimau', 'rimauswap.finance', false),
   },
 ];
 

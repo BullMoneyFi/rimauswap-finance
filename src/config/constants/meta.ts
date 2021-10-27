@@ -1,11 +1,12 @@
 import { ContextApi } from 'contexts/Localization/types'
+import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain'
 import { PageMeta } from './types'
 
 export const DEFAULT_META: PageMeta = {
   title: 'RimauSwap (BSC)',
   description:
     'RimauSwap - DEX Built For Global Crypto Communities via Sustainable ESG. Earn RIMAU through yield farming, then stake it in Syrup Pools to earn more tokens!.',
-  image: 'https://rimauswap.finance/images/hero.png',
+  image: getExternalLinkWithDomain('https://rimauswap.finance/images/home/lunar-tomcat/tomcat.svg', '', true),
 }
 
 export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
