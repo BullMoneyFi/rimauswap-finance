@@ -1,5 +1,6 @@
 import { MenuEntry } from '@rimauswap-libs/uikit'
 import { ContextApi } from 'contexts/Localization/types'
+import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain'
 
 
 
@@ -102,7 +103,7 @@ const config: (t: ContextApi['t'], currentLang:string) => MenuEntry[] = (t, curr
       {
         label: t('Audit'),
         // icon: 'InfoIcon',
-        href: currentLang === 'en' ? 'https://docs-en.rimauswap.finance/security-1/audits' : currentLang === 'zh-cn' ? 'https://docs-zh.rimauswap.finance/bao-wei/shen-ji' : currentLang === 'my' || currentLang === 'id' ? 'https://docs-bm.rimauswap.finance/keselamatan/audit' : 'https://docs-en.rimauswap.finance/security-1/audits',
+        href: currentLang === 'en' ? getExternalLinkWithDomain("https://docs-en.rimauswap.finance/security-1/audits", 'rimauswap.finance', false) : currentLang === 'zh-cn' ? getExternalLinkWithDomain("https://docs-zh.rimauswap.finance/bao-wei/shen-ji", 'rimauswap.finance', false) : currentLang === 'my' || currentLang === 'id' ? getExternalLinkWithDomain("https://docs-bm.rimauswap.finance/keselamatan/audit", 'rimauswap.finance', false) : getExternalLinkWithDomain("https://docs-en.rimauswap.finance/security-1/audits", 'rimauswap.finance', false),
         // items:[
         //   {
         //     label: t('EN'),
@@ -120,7 +121,7 @@ const config: (t: ContextApi['t'], currentLang:string) => MenuEntry[] = (t, curr
       },
       {
         label: t('Liquidity Lock'),
-        href: 'https://docs-en.rimauswap.finance/amm-launch#liquidity-lock',
+        href: getExternalLinkWithDomain('https://docs-en.rimauswap.finance/amm-launch#liquidity-lock', 'rimauswap.finance', false),
       },
       // {
       //   label: t('Buy Rimau'),
@@ -140,7 +141,7 @@ const config: (t: ContextApi['t'], currentLang:string) => MenuEntry[] = (t, curr
       // },
       {
         label: t('Contact'),
-        href: 'https://docs-en.rimauswap.finance/contact-us',
+        href: getExternalLinkWithDomain('https://docs-en.rimauswap.finance/contact-us', 'rimauswap.finance', false),
       },
       // {
       //   label: t('Merch'),

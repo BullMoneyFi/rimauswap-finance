@@ -3,10 +3,12 @@ import styled from 'styled-components'
 import { Flex, Heading, Text, Link } from '@rimauswap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
+import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain'
 import Container from 'components/Layout/Container'
 import { useWeb3React } from '@web3-react/core'
 import SunburstSvg from './SunburstSvg'
 import CompositeImage from './CompositeImage'
+
 
 const BgWrapper = styled.div`
   overflow: hidden;
@@ -111,7 +113,7 @@ const Footer = () => {
           {t('No registration needed.')}
         </Text>
 
-        <Link external href="https://docs.rimauswap.finance/">
+        <Link external href={getExternalLinkWithDomain('https://docs.rimauswap.finance/', 'rimauswap.finance', false)}>
           {t('Learn how to start')}
         </Link>
         {!account && <ConnectWalletButton mt="24px" />}

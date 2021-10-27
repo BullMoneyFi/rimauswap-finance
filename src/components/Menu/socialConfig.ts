@@ -1,5 +1,6 @@
 import { MenuEntry } from '@rimauswap-libs/uikit'
 import { ContextApi } from 'contexts/Localization/types'
+import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain';
 
 const socials: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   
@@ -46,15 +47,15 @@ const socials: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     items: [
       {
         label: t("BM"),
-        href: "https://docs-bm.rimauswap.finance/",
+        href: getExternalLinkWithDomain("https://docs-bm.rimauswap.finance/", 'rimauswap.finance', false),
       },
       {
         label: t("EN"),
-        href: "https://docs-en.rimauswap.finance/",
+        href: getExternalLinkWithDomain("https://docs-en.rimauswap.finance/", 'rimauswap.finance', false),
       },
       {
         label: t("ZH"),
-        href: "https://docs-zh.rimauswap.finance/",
+        href: getExternalLinkWithDomain("https://docs-zh.rimauswap.finance/", 'rimauswap.finance', false),
       },
     ],
   },
@@ -64,15 +65,15 @@ const socials: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     items: [
       {
         label: t("BM"),
-        href: `${window.location.origin}/whitepaper/Kertas-Putih-RimauSwap.pdf`, // "https://www.whitepaper-bm.rimauswap.finance/",
+        href: getExternalLinkWithDomain(`${window.location.origin}/whitepaper/Kertas-Putih-RimauSwap.pdf`, '', false), // "https://www.whitepaper-bm.rimauswap.finance/",
       },
       {
         label: t("EN"),
-        href: `${window.location.origin}/whitepaper/RimauSwap-Whitepaper.pdf`, // "https://www.whitepaper-en.rimauswap.finance/",
+        href: getExternalLinkWithDomain(`${window.location.origin}/whitepaper/RimauSwap-Whitepaper.pdf`, '', false), // "https://www.whitepaper-en.rimauswap.finance/",
       },
       {
         label: t("ZH"),
-        href: `${window.location.origin}/whitepaper/RimauSwap-Whitepaper-ZH.pdf`, // "https://whitepaper-zh.rimauswap.finance/",
+        href: getExternalLinkWithDomain(`${window.location.origin}/whitepaper/RimauSwap-Whitepaper-ZH.pdf`, '', false), // "https://whitepaper-zh.rimauswap.finance/",
       },
     ],
   },
@@ -82,15 +83,15 @@ const socials: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     items: [
       {
         label: t("BM"),
-        href: "https://docs-bm.rimauswap.finance/penyenaraian-coinmarketcap",
+        href: getExternalLinkWithDomain("https://docs-bm.rimauswap.finance/penyenaraian-coinmarketcap", 'rimauswap.finance', false),
       },
       {
         label: t("EN"),
-        href: "https://docs-en.rimauswap.finance/coinmarketcap-listing",
+        href: getExternalLinkWithDomain("https://docs-en.rimauswap.finance/coinmarketcap-listing", 'rimauswap.finance', false),
       },
       {
         label: t("ZH"),
-        href: "https://docs-zh.rimauswap.finance/zheng-shi-deng-lu-coinmarketcap",
+        href: getExternalLinkWithDomain("https://docs-zh.rimauswap.finance/zheng-shi-deng-lu-coinmarketcap", 'rimauswap.finance', false),
       },
     ],
   },

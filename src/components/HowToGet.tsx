@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from '@rimauswap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
+import { getExternalLinkWithDomain } from '../utils/getExternalLinkWithDomain';
 
 const FixedButton = styled.div`
   position: fixed;
@@ -38,7 +39,7 @@ const HowToGet: React.FC = () => {
 
   return (
     <FixedButton>
-      <Link external href="https://docs-en.rimauswap.finance/how-to-guides/how-to-get-rimau">
+      <Link external href={getExternalLinkWithDomain("https://docs-en.rimauswap.finance/how-to-guides/how-to-get-rimau", 'rimauswap.finance', false)}  >
       {t('How to Get Rimau?')}
       <img src={`${imagePath}${imageSrc}.svg`} alt="Rimau Icon" />
       </Link>

@@ -54,9 +54,9 @@ const getProfile = async (address: string): Promise<GetProfileResponse> => {
         `profile_${address}`,
         {
           username,
-          avatar: `https://rimauswap.finance/images/nfts/${nft?.images.sm}`,
+          avatar: `${window.location.origin}/images/nfts/${nft?.images.sm}`,
         },
-        { domain: 'rimauswap.finance', secure: true, expires: 30 },
+        { domain: window.location.host, secure: true, expires: 30 },
       )
     }
 

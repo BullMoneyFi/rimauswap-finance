@@ -3,6 +3,7 @@ import { Flex, useMatchBreakpoints, Heading, Text } from '@rimauswap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import styled from 'styled-components'
 import useTheme from 'hooks/useTheme'
+import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain'
 
 const BannerWrapper = styled.div`
   background:${({ theme }) => theme.colors.gradients.gold};
@@ -46,9 +47,9 @@ const Welcome = () => {
     const text = t('Take Advantage of Current Attractive APR to %Farm% and %Stake% at RimauSwap!');
     const farm = text.split("%Farm%");
     const stake = farm[1].split("%Stake%");
-    const farmLink = currentLanguage.code === 'en' ? 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau' : (currentLanguage.code === 'my' || currentLanguage.code === 'id') ? 'https://docs-bm.rimauswap.finance/produks/berladang-farming' :  currentLanguage.code === 'zh-cn' ? 'https://docs-zh.rimauswap.finance/products/rimau-yield-farming' : 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau';
+    const farmLink = currentLanguage.code === 'en' ? getExternalLinkWithDomain('https://docs-en.rimauswap.finance/products/how-to-farm-rimau', 'rimauswap.finance', false) : (currentLanguage.code === 'my' || currentLanguage.code === 'id') ? getExternalLinkWithDomain('https://docs-bm.rimauswap.finance/produks/berladang-farming', 'rimauswap.finance', false) :  currentLanguage.code === 'zh-cn' ? getExternalLinkWithDomain('https://docs-zh.rimauswap.finance/products/rimau-yield-farming', 'rimauswap.finance', false) : getExternalLinkWithDomain('https://docs-en.rimauswap.finance/products/how-to-farm-rimau', 'rimauswap.finance', false);
 
-    const stakeLink = currentLanguage.code === 'en' ? 'https://docs-en.rimauswap.finance/products/how-to-stake-rimau' : (currentLanguage.code === 'my' || currentLanguage.code === 'id') ? 'https://docs-bm.rimauswap.finance/produks/cagar-rimau-staking' :  currentLanguage.code === 'zh-cn' ? 'https://docs-zh.rimauswap.finance/products/rimau-staking' : 'https://docs-en.rimauswap.finance/products/how-to-stake-rimau';
+    const stakeLink = currentLanguage.code === 'en' ? getExternalLinkWithDomain('https://docs-en.rimauswap.finance/products/how-to-stake-rimau', 'rimauswap.finance', false) : (currentLanguage.code === 'my' || currentLanguage.code === 'id') ? getExternalLinkWithDomain('https://docs-bm.rimauswap.finance/produks/cagar-rimau-staking', 'rimauswap.finance', false) :  currentLanguage.code === 'zh-cn' ? getExternalLinkWithDomain('https://docs-zh.rimauswap.finance/products/rimau-staking', 'rimauswap.finance', false) : getExternalLinkWithDomain('https://docs-en.rimauswap.finance/products/how-to-stake-rimau', 'rimauswap.finance', false);
 
     return <span>{farm[0]} <a style={{color:theme.theme.colors.background}} href={farmLink} rel="noreferrer" target="_blank">{t('Farm')}</a> {stake[0]} <a style={{color:theme.theme.colors.background}} href={stakeLink} rel="noreferrer" target="_blank">{t('Stake')}</a> {stake[1]}</span>;
   }
