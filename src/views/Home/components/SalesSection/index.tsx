@@ -28,7 +28,7 @@ const SectionButtons = styled(Flex)`
     width:100%;
   }
   ${({ theme }) => theme.mediaQueries.sm} {
-    padding-left:40px;
+    padding-left:78px;
     *{
       width:auto;
     }
