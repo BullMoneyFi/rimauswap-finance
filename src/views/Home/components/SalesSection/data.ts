@@ -1,8 +1,8 @@
 import { SalesSectionProps } from '.'
 
 export const swapSectionData: SalesSectionProps = {
-  headingText: 'Stake RIMAU, Earn More RIMAU',
-  bodyText: 'Stake your RIMAU tokens with attractive APR in our Belang Pool and compound your asset quantity.',
+  headingText: 'Appreciation Intensive Tokenomics',
+  bodyText: 'Half of the proceed from RIMAU DeFi Farm is used to actively buy RIMAU from the market & burned. Reducing circulating supply results in high value retention and appreciation over time":"Half of the proceed from RIMAU DeFi Farm is used to actively buy RIMAU from the market & burned. Reducing circulating supply results in high value retention and appreciation over time',
   reverse: false,
   primaryButton: {
     to: '/swap',
@@ -20,8 +20,8 @@ export const swapSectionData: SalesSectionProps = {
 }
 
 export const earnSectionData: SalesSectionProps = {
-  headingText: 'Now Everyone Can Share the DeFi Economy!',
-  bodyText: 'Why pay when you can share a piece of the DEX revenue? Get enriched and make common good at the same time. It doesn’t get any better than this!',
+  headingText: 'Self-sustainable Contribution For The Underprivileged',
+  bodyText: 'As RIMAU DeFi Farm grows, so is the farm proceed and continuous funding of the RimauSwap ESG charity programs: FeedUp! SkillUp! and StartUp!',
   reverse: true,
   primaryButton: {
     to: '/swap',
@@ -38,9 +38,9 @@ export const earnSectionData: SalesSectionProps = {
   },
 }
 export const cakeSectionData: SalesSectionProps = {
-  headingText: 'Support sustainable Environment, Social and Governance (ESG).',
+  headingText: 'Leave No One Behind',
   bodyText:
-    'Be part of an ecosystem designed to fund sustainable contributions to the communities through DeFi yield farming.',
+    'Some of us are lucky enough to be benefitting from the DeFi market financially. As we progress, let us also include the underprivileged communities. Support our vision. Together, we can make the world a better place',
   reverse: true,
   primaryButton: {
     to: '/swap',

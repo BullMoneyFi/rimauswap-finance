@@ -98,10 +98,10 @@ const Hero = () => {
           alignItems={['center', null, null, 'center']}
           flexDirection="column">
           <Heading scale="xxl" color="textSubtle" fontSize={isXs || isSm?  "30px !important" : isMd? "40px !important" : "50px !important"} mb="20px">
-            {t('Switch over to RimauSwap. Let’s show the world DeFi can do good.')}
+            {t('Support RIMAU DeFi Farm Fundraise')}
           </Heading>
           <Text textAlign="left" fontSize="16px" style={{opacity:0.5}} color="textSubtle" mb="20px">
-            {t('DEX Built For Global Crypto Markets in a sustainable manner through DeFi yield farming.')}
+            {t('Raised fund is used for DeFi Yield Farming and portfolio management, half of the proceed is used to fund charity programs for the underprivileged, sustainably')}
           </Text>
           <Flex flexDirection={['column', null, 'row', null]}>
             {!account && <ConnectWalletButton />}

@@ -15,7 +15,7 @@ const BannerWrapper = styled.div`
   border-radius: 30px;
   overflow: hidden;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   width: 100%;
   padding-left: 20px;
@@ -37,6 +37,7 @@ const BannerWrapper = styled.div`
     margin-left: 10px;
     padding: 25px;
     width:100%;
+    height:100%;
     .right-image{
       display:block;
     }
@@ -45,6 +46,7 @@ const BannerWrapper = styled.div`
     margin-bottom: 10px;
     margin: 10px;
     padding: 25px;
+    align-items: flex-start;
     .right-image{
       display:block;
     }
@@ -63,14 +65,14 @@ const Farmstitle = () => {
     <BannerMain>
       <Flex
           flexDirection={['column', 'column', 'column', 'row']}
-          alignItems={['flex-start', null, null, 'flex-start']}
+          alignItems={['flex-start', null, null, 'stretch']}
           justifyContent="flex-start"
           > 
           <Flex
           flexDirection="column"
           width="100%"
           mr={[null, null, null, '10px']}
-          flex={["100", "100", "100", "30"]}>
+          flex={["100", "100", "100", "100"]}>
             <BannerWrapper>
               <Flex
                 position="relative"
@@ -80,11 +82,36 @@ const Farmstitle = () => {
                 > 
                 <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'center'}>
                   <Text textAlign="left" bold fontSize="18px" style={{opacity:0.8}} color="black" mb="10px">
-                  {t('Earn RIMAU')}
+                  {t('RimauSwap Rebooted')}
                   </Text>
                   <Text textAlign="left" fontSize="14px" style={{opacity:0.8}} color="black" mb="px">
-                      {t('Earn RIMAU. Add liquidity & stake the LP token to farm RIMAU tokens.')}
-                      <span className="Linkhref" style={{fontWeight:800,paddingLeft: 4, textDecoration: 'underline'}}>
+                      {t('RimauSwap is ‘Rebooted’ with improved clarity in serving the underprivileged. Existing liquidity farms have been decommissioned. Existing stakers can unstake from respective farm in the ‘Finished Farms’ listing by toggling the “Live | Finished” button. Unstaked RIMAUs can be staked in Belang Pool to continue earning more RIMAUs.')}
+                      
+                  </Text>
+                </Flex>
+              </Flex>
+            </BannerWrapper> 
+          </Flex>
+          <Flex
+          flexDirection="column"
+          width="100%"
+          ml={[null, null, null, '10px']}
+          mr={[null, null, null, '10px']}
+          flex={["100", "100", "100", "100"]}>
+            <BannerWrapper>
+              <Flex
+                position="relative"
+                flexDirection={['row', null, null, 'row']}
+                alignItems={['center', null, null, 'center']}
+                justifyContent="center"
+                > 
+                <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'center'}>
+                  <Text textAlign="left" bold fontSize="18px" style={{opacity:0.8}} color="black" mb="10px">
+                    {t('Get RIMAU, Help The Underprivileged')}
+                    </Text>
+                  <Text textAlign="left" fontSize="14px" style={{opacity:0.8}} color="black" mb="px">  
+                    {t('Acquire RIMAU now & help populate the ‘RIMAU DeFi Farm’. Proceed from DeFi Yield Farming & Portfolio Management is used to fund ongoing ESG charity programs benefitting the underprivileged, sustainably')}
+                    <span className="Linkhref" style={{fontWeight:800,paddingLeft: 4, textDecoration: 'underline'}}>
                       <a href={getLink(currentLanguage?.code)} rel="noreferrer" target="_blank">{t('Learn how')} </a>
                     </span>
                   </Text>
@@ -97,31 +124,7 @@ const Farmstitle = () => {
           width="100%"
           ml={[null, null, null, '10px']}
           mr={[null, null, null, '10px']}
-          flex={["100", "100", "100", "30"]}>
-            <BannerWrapper>
-              <Flex
-                position="relative"
-                flexDirection={['row', null, null, 'row']}
-                alignItems={['center', null, null, 'center']}
-                justifyContent="center"
-                > 
-                <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'center'}>
-                  <Text textAlign="left" bold fontSize="18px" style={{opacity:0.8}} color="black" mb="10px">
-                    {t('Localized DEX')}
-                    </Text>
-                  <Text textAlign="left" fontSize="14px" style={{opacity:0.8}} color="black" mb="px">  
-                    {t('RimauSwap is your friendly localized DEX and DeFi Farm on Binance Smart Chain.')}
-                  </Text>
-                </Flex>
-              </Flex>
-            </BannerWrapper> 
-          </Flex>
-          <Flex
-          flexDirection="column"
-          width="100%"
-          ml={[null, null, null, '10px']}
-          mr={[null, null, null, '10px']}
-          flex={["100", "100", "100", "60"]}>
+          flex={["100", "100", "100", "100"]}>
             <BannerWrapper>
               <Flex
                 position="relative"
@@ -134,7 +137,7 @@ const Farmstitle = () => {
                     {t('Appreciation-Intensive Tokenomics')}
                   </Text>
                   <Text textAlign="left" fontSize="14px" style={{opacity:0.8}} color="black" mb="px">
-                    {t('Unlike other DeFi projects, the native RIMAU token is designed with an Appreciation-Intensive Tokenomics, resulting in high value retention, and appreciation over time.')}
+                    {t('Unlike other DeFi projects, the native RIMAU token is designed with an Appreciation-Intensive Tokenomics with active token buyback from market for burning, resulting in high value retention, and appreciation over time')}
                       <span className="Linkhref" style={{fontWeight:800,paddingLeft: 4, textDecoration: 'underline'}}>
                       <a href={getLink(currentLanguage?.code)} rel="noreferrer" target="_blank">{t('Learn how')} </a>
                     </span>
