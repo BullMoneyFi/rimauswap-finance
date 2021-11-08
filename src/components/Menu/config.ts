@@ -25,6 +25,11 @@ const config: (t: ContextApi['t'], currentLang:string) => MenuEntry[] = (t, curr
     ],
   },
   {
+    label: t('RimauSwap v1 (old)'),
+    icon: 'FarmIcon',
+    href: 'https://v1.rimauswap.farm/farms',
+  },
+  {
     label: t('Farming'),
     icon: 'FarmIcon',
     href: '/farms',

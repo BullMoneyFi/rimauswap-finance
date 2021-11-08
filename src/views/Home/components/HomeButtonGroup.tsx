@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, useMatchBreakpoints, Button } from '@rimauswap-libs/uikit'
-import { ChainId } from '@rimauswap-sdk/sdk'
+import { ChainId } from '@pancakeswap/sdk'
 import { useTranslation } from 'contexts/Localization'
 import { registerToken } from 'utils/wallet'
 import { RIMAU } from 'config/constants/tokens'

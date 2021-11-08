@@ -1,5 +1,5 @@
 import React from 'react'
-import { Currency, Pair } from '@rimauswap-sdk/sdk'
+import { Currency, Pair } from '@pancakeswap/sdk'
 import { Button, ChevronDownIcon, Text, useModal, Flex, useMatchBreakpoints } from '@rimauswap-libs/uikit'
 // import {  useRouteMatch, useLocation } from 'react-router-dom'
 import styled from 'styled-components'

@@ -1,4 +1,4 @@
-import { ChainId, Token } from '@rimauswap-sdk/sdk'
+import { ChainId, Token } from '@pancakeswap/sdk'
 
 
 

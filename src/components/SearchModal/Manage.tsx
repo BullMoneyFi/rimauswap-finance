@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Token } from '@rimauswap-sdk/sdk'
+import { Token } from '@pancakeswap/sdk'
 import { ButtonMenu, ButtonMenuItem, ModalBody } from '@rimauswap-libs/uikit'
 import styled from 'styled-components'
 import { TokenList } from '@uniswap/token-lists'

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
-import { ChainId } from '@rimauswap-sdk/sdk'
+import { ChainId } from '@pancakeswap/sdk'
 import { RIMAU } from 'config/constants/tokens'
 import { isAddress } from 'utils'
 import LogoLoader from './LogoLoader'

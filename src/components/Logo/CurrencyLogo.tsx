@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@rimauswap-sdk/sdk'
+import { Currency, ETHER, Token } from '@pancakeswap/sdk'
 import { BinanceIcon } from '@rimauswap-libs/uikit'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'

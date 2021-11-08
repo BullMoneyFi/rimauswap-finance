@@ -1,5 +1,5 @@
 import React from 'react'
-import { Trade, TradeType } from '@rimauswap-sdk/sdk'
+import { Trade, TradeType } from '@pancakeswap/sdk'
 import { Text } from '@rimauswap-libs/uikit'
 import { Field } from 'state/swap/actions'
 import { useUserSlippageTolerance } from 'state/user/hooks'

@@ -1,4 +1,4 @@
-import { Currency, Percent, Price } from '@rimauswap-sdk/sdk'
+import { Currency, Percent, Price } from '@pancakeswap/sdk'
 import React from 'react'
 import { Text } from '@rimauswap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'

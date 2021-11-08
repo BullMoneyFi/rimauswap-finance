@@ -1,4 +1,4 @@
-import { ChainId } from '@rimauswap-sdk/sdk'
+import { ChainId } from '@pancakeswap/sdk'
 import { createStore, Store } from 'redux'
 import { updateBlockNumber } from './actions'
 import reducer, { ApplicationState } from './reducer'

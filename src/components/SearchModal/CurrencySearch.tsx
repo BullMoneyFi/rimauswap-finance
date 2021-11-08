@@ -1,5 +1,5 @@
 import React, { KeyboardEvent, RefObject, useCallback, useMemo, useRef, useState, useEffect } from 'react'
-import { Currency, ETHER, Token } from '@rimauswap-sdk/sdk'
+import { Currency, ETHER, Token } from '@pancakeswap/sdk'
 import { Text, Input, Box, Svg } from '@rimauswap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { FixedSizeList } from 'react-window'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChainId, Currency, currencyEquals, ETHER, Token } from '@rimauswap-sdk/sdk'
+import { ChainId, Currency, currencyEquals, ETHER, Token } from '@pancakeswap/sdk'
 import { Text } from '@rimauswap-libs/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'

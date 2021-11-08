@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Currency, ETHER, JSBI, TokenAmount } from '@rimauswap-sdk/sdk'
+import { Currency, ETHER, JSBI, TokenAmount } from '@pancakeswap/sdk'
 import { Button, ChevronDownIcon, Text, AddIcon, useModal } from '@rimauswap-libs/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'

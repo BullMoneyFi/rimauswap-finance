@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
-import { Pair } from '@rimauswap-sdk/sdk'
+import { Pair } from '@pancakeswap/sdk'
 import { Text, Flex, CardBody, CardFooter, Button, AddIcon } from '@rimauswap-libs/uikit'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'

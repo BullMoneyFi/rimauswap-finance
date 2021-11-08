@@ -1,4 +1,4 @@
-import { Token } from '@rimauswap-sdk/sdk'
+import { Token } from '@pancakeswap/sdk'
 import { parseUnits } from 'ethers/lib/utils'
 import { SerializedToken } from '../actions'
 

@@ -2,11 +2,11 @@ import { SalesSectionProps } from '.'
 
 export const swapSectionData: SalesSectionProps = {
   headingText: 'Appreciation Intensive Tokenomics',
-  bodyText: 'Half of the proceed from RIMAU DeFi Farm is used to actively buy RIMAU from the market & burned. Reducing circulating supply results in high value retention and appreciation over time":"Half of the proceed from RIMAU DeFi Farm is used to actively buy RIMAU from the market & burned. Reducing circulating supply results in high value retention and appreciation over time',
+  bodyText: 'Half of the proceed from RIMAU DeFi Farm is used to actively buy RIMAU from the market & burned. Reducing circulating supply results in high value retention and appreciation over time.',
   reverse: false,
   primaryButton: {
     to: '/swap',
-    text: 'Trade Now',
+    text: 'Get RIMAU token',
     external: false,
   },
   images: {
@@ -25,7 +25,7 @@ export const earnSectionData: SalesSectionProps = {
   reverse: true,
   primaryButton: {
     to: '/swap',
-    text: 'Trade Now',
+    text: 'Get RIMAU token',
     external: false,
   },
   images: {
@@ -44,7 +44,7 @@ export const cakeSectionData: SalesSectionProps = {
   reverse: true,
   primaryButton: {
     to: '/swap',
-    text: 'Trade Now',
+    text: 'Get RIMAU token',
     external: false,
   },
   // secondaryButton: {

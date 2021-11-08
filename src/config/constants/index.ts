@@ -1,7 +1,7 @@
-import { ChainId, JSBI, Percent, Token, WETH } from '@rimauswap-sdk/sdk'
+import { ChainId, JSBI, Percent, Token, WETH } from '@pancakeswap/sdk'
 import { BUSD, DAI, USDT, BTCB, RIMAU, WBNB, UST, ETH, USDC } from './tokens'
 
-export const ROUTER_ADDRESS = '0x64E8Dad72fEB8Af8261D377A0a2c1441e3589A75'
+export const ROUTER_ADDRESS = '0x10ED43C718714eb63d5aA57B78B54704E256024E' // '0x64E8Dad72fEB8Af8261D377A0a2c1441e3589A75'
 // '0x10ED43C718714eb63d5aA57B78B54704E256024E'
 
 // a list of tokens by chain

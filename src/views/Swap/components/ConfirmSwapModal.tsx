@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react'
-import { currencyEquals, Trade } from '@rimauswap-sdk/sdk'
+import { currencyEquals, Trade } from '@pancakeswap/sdk'
 import { InjectedModalProps } from '@rimauswap-libs/uikit'
 import Tap from "@tapfiliate/tapfiliate-js";
 import { useTranslation } from 'contexts/Localization'

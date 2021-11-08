@@ -1,4 +1,4 @@
-import { Pair, Token, ChainId } from '@rimauswap-sdk/sdk'
+import { Pair, Token, ChainId } from '@pancakeswap/sdk'
 import flatMap from 'lodash/flatMap'
 import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
