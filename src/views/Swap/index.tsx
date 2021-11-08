@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { CurrencyAmount, JSBI, Token, Trade } from '@pancakeswap/sdk'
-import { Button, Text, ArrowDownIcon, Box, Heading, useModal, useMatchBreakpoints } from '@rimauswap-libs/uikit'
+import { Button, Text, ArrowDownIcon, Box, Heading, Flex, useModal, useMatchBreakpoints, Card } from '@rimauswap-libs/uikit'
 import { useIsTransactionUnsupported } from 'hooks/Trades'
 import UnsupportedCurrencyFooter from 'components/UnsupportedCurrencyFooter'
 import { RouteComponentProps } from 'react-router-dom'
@@ -43,6 +43,7 @@ import { computeTradePriceBreakdown, warningSeverity } from '../../utils/prices'
 import CircleLoader from '../../components/Loader/CircleLoader'
 import Page from '../Page'
 import SwapWarningModal from './components/SwapWarningModal'
+import Farmstitle from './components/Farmstitle'
 
 const Label = styled(Text)`
   font-size: 12px;
@@ -58,6 +59,15 @@ const StyledHeader = styled(PageHeader)`
   }
   ${({ theme }) => theme.mediaQueries.md} {
     display:none;
+  }
+`
+
+const BoxCard = styled(Card)`
+  background: linear-gradient(180deg, rgba(136, 101, 235, 0.5) 0%, rgba(136, 101, 235, 0.18) 100%);
+  backdrop-filter: blur(28px);
+  border-radius: 20px;
+  & text{
+    color: ${({ theme }) => theme.colors.textSubtle};
   }
 `
 
@@ -326,8 +336,11 @@ export default function Swap({ history }: RouteComponentProps) {
           {t('Trade')}
         </Heading>
       </StyledHeader>
+      <PageHeader>
+        <Farmstitle />
+      </PageHeader>
     <Page>
-     
+      
       <AppBody>
         <AppHeader showSubmenu={shwoSubmenu} title={null} subtitle={null} />
         <Wrapper id="swap-page">

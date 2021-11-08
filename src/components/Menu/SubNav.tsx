@@ -44,14 +44,15 @@ const Nav = () => {
   const { t } = useTranslation()
   return (
     <StyledNav>
-      <ButtonMenu activeIndex={getActiveIndex(location.pathname)} scale={isMobile?'md':'md'}>
-        <ButtonMenuItem id="swap-nav-link" to="/swap" as={Link}>
-          {t('Swap')}
-        </ButtonMenuItem>
-        <ButtonMenuItem id="pool-nav-link" to="/pool" as={Link}>
+      <ButtonMenuItem id="swap-nav-link" to="/swap" as={Link}>
+        {t('Swap')}
+      </ButtonMenuItem>
+      {/* <ButtonMenu activeIndex={getActiveIndex(location.pathname)} scale={isMobile?'md':'md'}>
+       
+        {/* <ButtonMenuItem id="pool-nav-link" to="/pool" as={Link}>
           {t('Liquidity')}
-        </ButtonMenuItem>
-      </ButtonMenu>
+        </ButtonMenuItem> */}
+      {/* </ButtonMenu> */}
     </StyledNav>
   )
 }

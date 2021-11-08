@@ -6,7 +6,7 @@ import useTheme from 'hooks/useTheme'
 import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain'
 
 const BannerWrapper = styled.div`
-  background:${({ theme }) => theme.colors.gradients.gold};
+  background:${({ theme }) => theme.colors.forth};
   border-radius: 30px;
   overflow: hidden;
   padding-left: 30px;
@@ -72,10 +72,10 @@ const Welcome = () => {
               : 
                 <img src={`/images/Merdeka/d-${currentLanguage.code}.png`} style={{width: '100%', margin:'auto'}} alt={t('Merdeka')} />
             } */}
-          <Heading scale="xxl" color="textSubtle" fontSize={isXs || isSm?  "25px !important" :  isMd? "30px !important" : "40px !important"}  mb="20px">
+          <Heading scale="xxl" color="white" fontSize={isXs || isSm?  "25px !important" :  isMd? "30px !important" : "40px !important"}  mb="20px">
            {replaceLink()}
           </Heading>
-          <Text textAlign="left" fontSize="18px" style={{opacity:0.5}} color="textSubtle" mb="px">
+          <Text textAlign="left" fontSize="18px" style={{opacity:0.5}} color="white" mb="px">
             {t('Let Us Grow Together & Build The Sustainable ESG For Common Good!')}
           </Text>
         </Flex>

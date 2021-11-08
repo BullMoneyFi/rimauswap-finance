@@ -60,7 +60,6 @@ const BgWrapper = styled.div`
 
 const BunnyWrapper = styled.div`
   width: 100%;
-  text-align:right;
   animation: ${flyingAnim} 3.5s ease-in-out infinite;
   & img{
     width:75%;
@@ -93,27 +92,6 @@ const Hero = () => {
         alignItems={['flex-end', null, 'center', 'center']}
         justifyContent="center"
       >
-        <Flex 
-          flex={[null, null, null, '55']}
-          alignItems={['center', null, null, 'center']}
-          flexDirection="column">
-          <Heading scale="xxl" color="textSubtle" fontSize={isXs || isSm?  "30px !important" : isMd? "40px !important" : "50px !important"} mb="20px">
-            {t('Support RIMAU DeFi Farm Fundraise')}
-          </Heading>
-          <Text textAlign="left" fontSize="16px" style={{opacity:0.5}} color="textSubtle" mb="20px">
-            {t('Raised fund is used for DeFi Yield Farming and portfolio management, half of the proceed is used to fund charity programs for the underprivileged, sustainably')}
-          </Text>
-          <Flex flexDirection={['column', null, 'row', null]}>
-            {!account && <ConnectWalletButton />}
-            <NavLink className="margin" to="/swap">
-              <Button scale="md" variant="secondary">{t('Trade Now')}</Button>
-            </NavLink>
-          
-            <NavLink className="margin" to="/swap?inputCurrency=0x2170ed0880ac9a755fd29b2688956bd959f933f8&outputCurrency=0x098dCbf3518856E45BB4e65E7fCc7C5Ff4a2C16e">
-              <Button scale="md" variant="danger">{t('Get RIMAU Token')}</Button>
-            </NavLink>
-          </Flex>
-        </Flex>
         <Flex
           flex={[null, null, null, '45']}
           mb={['24px', null, null, '0']}
@@ -130,6 +108,29 @@ const Hero = () => {
             <CompositeImage {...starsImage} />
           </StarsWrapper> */}
         </Flex>
+        <Flex 
+          flex={[null, null, null, '55']}
+          alignItems={['center', null, null, 'center']}
+          flexDirection="column">
+          <Heading scale="xxl" color="textSubtle" fontSize={isXs || isSm?  "30px !important" : isMd? "40px !important" : "50px !important"} mb="20px">
+            {t('Support RIMAU DeFi Farm Fundraise')}
+          </Heading>
+          <Text textAlign="left" fontSize="16px" style={{opacity:0.5}} color="textSubtle" mb="20px">
+            {t('Raised fund is used for DeFi Yield Farming and portfolio management, half of the proceed is used to fund charity programs for the underprivileged, sustainably')}
+          </Text>
+          <Flex flexDirection={['column', null, 'row', null]}>
+            {!account && <ConnectWalletButton />}
+            <NavLink className="margin" to="/swap?inputCurrency=0x2170ed0880ac9a755fd29b2688956bd959f933f8&outputCurrency=0x098dCbf3518856E45BB4e65E7fCc7C5Ff4a2C16e">
+              <Button scale="md" variant="primary"><img style={{ width: 32, marginRight: 10, border: '2px solid #ef932170', borderRadius: '100%' }} src={`${'/images/icon.svg'}`}  alt="text" />{t('Get RIMAU Token')}</Button>
+            </NavLink>
+            <NavLink className="margin" to="/swap">
+              <Button scale="md" variant="secondary">{t('Trade Now')}</Button>
+            </NavLink>
+          
+            
+          </Flex>
+        </Flex>
+        
       </Flex>
     </BgWrapper>
   )

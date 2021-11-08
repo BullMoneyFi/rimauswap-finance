@@ -79,6 +79,8 @@ const SalesSection: React.FC<SalesSectionProps> = (props) => {
           <SectionButtons>
             <Link mr="16px" external={primaryButton.external} href={primaryButton.to}>
                 <Button>
+                  <img style={{ width: 32, marginRight: 10, border: '2px solid #ef932170', borderRadius: '100%' }} src={`${'/images/icon.svg'}`}  alt="text" />
+                 
                   <Text color="card" bold fontSize="16px">
                     {t(primaryButton.text)}
                   </Text>

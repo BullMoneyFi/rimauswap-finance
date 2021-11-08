@@ -3,7 +3,7 @@ import { SalesSectionProps } from '.'
 export const swapSectionData: SalesSectionProps = {
   headingText: 'Appreciation Intensive Tokenomics',
   bodyText: 'Half of the proceed from RIMAU DeFi Farm is used to actively buy RIMAU from the market & burned. Reducing circulating supply results in high value retention and appreciation over time.',
-  reverse: false,
+  reverse: true,
   primaryButton: {
     to: '/swap',
     text: 'Get RIMAU token',
@@ -22,7 +22,7 @@ export const swapSectionData: SalesSectionProps = {
 export const earnSectionData: SalesSectionProps = {
   headingText: 'Self-sustainable Contribution For The Underprivileged',
   bodyText: 'As RIMAU DeFi Farm grows, so is the farm proceed and continuous funding of the RimauSwap ESG charity programs: FeedUp! SkillUp! and StartUp!',
-  reverse: true,
+  reverse: false,
   primaryButton: {
     to: '/swap',
     text: 'Get RIMAU token',
@@ -41,7 +41,7 @@ export const cakeSectionData: SalesSectionProps = {
   headingText: 'Leave No One Behind',
   bodyText:
     'Some of us are lucky enough to be benefitting from the DeFi market financially. As we progress, let us also include the underprivileged communities. Support our vision. Together, we can make the world a better place',
-  reverse: true,
+  reverse: false,
   primaryButton: {
     to: '/swap',
     text: 'Get RIMAU token',

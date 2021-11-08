@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import PageSection from 'components/PageSection'
 import { useWeb3React } from '@web3-react/core'
+import { Link } from '@rimauswap-libs/uikit'
 import useTheme from 'hooks/useTheme'
 import Hero from './components/Hero'
 import { swapSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
 import SalesSection from './components/SalesSection'
 import UserBanner from './components/UserBanner'
 import Welcome from './components/Welcome'
+
 
 // import HomeButtonGroup from './components/HomeButtonGroup'
 // import WinSection from './components/WinSection'
@@ -24,6 +26,12 @@ const StyledHeroSection = styled(PageSection)`
   ${({ theme }) => theme.mediaQueries.md} {
     padding-top: 0px !important;
   }
+`
+
+const HomeFooter = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
 `
 
 
@@ -120,6 +128,22 @@ const Home: React.FC = () => {
         </OuterWedgeWrapper> */}
         <SalesSection {...cakeSectionData} />
       </PageSection>
+      <PageSection
+        className="mobile-container"
+        innerProps={{ style: HomeSectionContainerStyles }}
+        index={2}
+        hasCurvedDivider={false}
+      >
+        <HomeFooter>
+          <Link external style={{marginRight:5}} href="https://paladinsec.co/projects/rimauswap-finance/" target="_blank">
+            <img src="https://paladinsec.co/pld/assets/audited-by-paladin-standard.svg" alt="paladin" width="150"/>
+          </Link>
+          <Link external style={{marginRight:5}} href="https://rugdoc.io/project/rimauswap/" target="_blank">
+            <img src="https://rugdoc.io/assets/2021/05/rugdoc-review-badge-for-light-bg.svg" alt="rugdoc" width="140"/>
+          </Link>
+        </HomeFooter>
+      </PageSection>
+      
     </>
   )
 }

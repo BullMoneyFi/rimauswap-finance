@@ -18,10 +18,10 @@ const config: (t: ContextApi['t'], currentLang:string) => MenuEntry[] = (t, curr
         label: t('Swap'),
         href: '/swap',
       },
-      {
-        label: t('Liquidity'),
-        href: '/liquidity',
-      },
+      // {
+      //   label: t('Liquidity'),
+      //   href: '/liquidity',
+      // },
     ],
   },
   {
@@ -29,11 +29,11 @@ const config: (t: ContextApi['t'], currentLang:string) => MenuEntry[] = (t, curr
     icon: 'FarmIcon',
     href: 'https://v1.rimauswap.farm/farms',
   },
-  {
-    label: t('Farming'),
-    icon: 'FarmIcon',
-    href: '/farms',
-  },
+  // {
+  //   label: t('Farming'),
+  //   icon: 'FarmIcon',
+  //   href: '/farms',
+  // },
   {
     label: t('Pools'),
     icon: 'PoolIcon',
