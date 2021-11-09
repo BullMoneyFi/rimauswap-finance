@@ -29,7 +29,7 @@ import {
   RedirectToAddLiquidity,
 } from './views/AddLiquidity/redirects'
 import RedirectOldRemoveLiquidityPathStructure from './views/RemoveLiquidity/redirects'
-import { RedirectPathToSwapOnly, RedirectToSwap } from './views/Swap/redirects'
+import { RedirectPathToSwapOnly, RedirectToBuyRimau, RedirectToSwap } from './views/Swap/redirects'
 
 
 // Route-based code splitting
@@ -133,6 +133,7 @@ const App: React.FC = () => {
             {/* Using this format because these components use routes injected props. We need to rework them with hooks */}
             <Route exact strict path="/swap" component={Swap} />
             <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
+            <Route exact strict path="/buy-rimau" component={Swap} />
             <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
             <Route exact strict path="/find" component={PoolFinder} />
             <Route exact strict path="/liquidity" component={Liquidity} />

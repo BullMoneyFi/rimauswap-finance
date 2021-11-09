@@ -44,20 +44,21 @@ const socials: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   {
     label: t("Docs"),
     icon: "DocsIcon",
-    items: [
-      {
-        label: t("BM"),
-        href: getExternalLinkWithDomain("https://docs-bm.rimauswap.finance/", 'rimauswap.finance', false),
-      },
-      {
-        label: t("EN"),
-        href: getExternalLinkWithDomain("https://docs-en.rimauswap.finance/", 'rimauswap.finance', false),
-      },
-      {
-        label: t("ZH"),
-        href: getExternalLinkWithDomain("https://docs-zh.rimauswap.finance/", 'rimauswap.finance', false),
-      },
-    ],
+    href: getExternalLinkWithDomain("https://docs-en.rimauswap.finance/", 'rimauswap.finance', false),
+    // items: [
+    //   {
+    //     label: t("BM"),
+    //     href: getExternalLinkWithDomain("https://docs-bm.rimauswap.finance/", 'rimauswap.finance', false),
+    //   },
+    //   {
+    //     label: t("EN"),
+    //     href: getExternalLinkWithDomain("https://docs-en.rimauswap.finance/", 'rimauswap.finance', false),
+    //   },
+    //   {
+    //     label: t("ZH"),
+    //     href: getExternalLinkWithDomain("https://docs-zh.rimauswap.finance/", 'rimauswap.finance', false),
+    //   },
+    // ],
   },
   {
     label: t("Whitepaper"),

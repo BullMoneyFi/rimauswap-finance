@@ -52,7 +52,7 @@ const Welcome = () => {
     // const stakeLink = currentLanguage.code === 'en' ? getExternalLinkWithDomain('https://docs-en.rimauswap.finance/products/how-to-stake-rimau', 'rimauswap.finance', false) : (currentLanguage.code === 'my' || currentLanguage.code === 'id') ? getExternalLinkWithDomain('https://docs-bm.rimauswap.finance/produks/cagar-rimau-staking', 'rimauswap.finance', false) :  currentLanguage.code === 'zh-cn' ? getExternalLinkWithDomain('https://docs-zh.rimauswap.finance/products/rimau-staking', 'rimauswap.finance', false) : getExternalLinkWithDomain('https://docs-en.rimauswap.finance/products/how-to-stake-rimau', 'rimauswap.finance', false);
 
     // return <span>{farm[0]} <a style={{color:theme.theme.colors.background}} href={farmLink} rel="noreferrer" target="_blank">{t('Farm')}</a> {stake[0]} <a style={{color:theme.theme.colors.background}} href={stakeLink} rel="noreferrer" target="_blank">{t('Stake')}</a> {stake[1]}</span>;
-    return <span>{text}</span>
+    return text
   }
 
   return (
@@ -72,10 +72,26 @@ const Welcome = () => {
               : 
                 <img src={`/images/Merdeka/d-${currentLanguage.code}.png`} style={{width: '100%', margin:'auto'}} alt={t('Merdeka')} />
             } */}
-          <Heading scale="xxl" color="white" fontSize={isXs || isSm?  "25px !important" :  isMd? "30px !important" : "40px !important"}  mb="20px">
+          <Heading scale="xxl" style={{
+            fontFamily: 'Inter',
+            fontSize: 20,
+            fontStyle: 'normal',
+            lineHeight: '24px',
+            'fontWeight': 700,
+            letterSpacing: '0em',
+            textAlign: 'center'
+            }} color="white"   mb="20px">
            {replaceLink()}
           </Heading>
-          <Text textAlign="left" fontSize="18px" style={{opacity:0.5}} color="white" mb="px">
+          <Text style={{opacity:0.5,
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontStyle: 'normal',
+                      lineHeight: '22px',
+                      'fontWeight': 500,
+                      letterSpacing: '0em',
+                      textAlign: 'center'
+          }} color="white" mb="px">
             {t('Let Us Grow Together & Build The Sustainable ESG For Common Good!')}
           </Text>
         </Flex>

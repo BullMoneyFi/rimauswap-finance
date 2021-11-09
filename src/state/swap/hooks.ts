@@ -1,5 +1,5 @@
 import { parseUnits } from '@ethersproject/units'
-import { Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount, Trade } from '@pancakeswap/sdk'
+import { ChainId, Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount, Trade } from '@pancakeswap/sdk'
 import { ParsedQs } from 'qs'
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,6 +11,7 @@ import useParsedQueryString from 'hooks/useParsedQueryString'
 import { useTranslation } from 'contexts/Localization'
 import { isAddress } from 'utils'
 import { computeSlippageAdjustedAmounts } from 'utils/prices'
+import { RIMAU, USDT } from 'config/constants/tokens'
 import { AppDispatch, AppState } from '../index'
 import { useCurrencyBalances } from '../wallet/hooks'
 import { Field, replaceSwapState, selectCurrency, setRecipient, switchCurrencies, typeInput } from './actions'
@@ -234,19 +235,21 @@ export function queryParametersToSwapState(parsedQs: ParsedQs): SwapState {
   if (inputCurrency === outputCurrency) {
     if (typeof parsedQs.outputCurrency === 'string') {
       inputCurrency = ''
-    } else {
+    } else if (Object.keys(parsedQs).length > 0) {
       outputCurrency = ''
+    } else {
+      inputCurrency = USDT.address
+      outputCurrency = RIMAU[ChainId.MAINNET].address 
     }
   }
 
   const recipient = validatedRecipient(parsedQs.recipient)
-
   return {
     [Field.INPUT]: {
-      currencyId: inputCurrency,
+      currencyId: (inputCurrency && inputCurrency !== '')? inputCurrency: '0x098dcbf3518856e45bb4e65e7fcc7c5ff4a2c16e',
     },
     [Field.OUTPUT]: {
-      currencyId: outputCurrency,
+      currencyId: (outputCurrency && outputCurrency !== '')? outputCurrency: '',
     },
     typedValue: parseTokenAmountURLParameter(parsedQs.exactAmount),
     independentField: parseIndependentFieldURLParameter(parsedQs.exactField),

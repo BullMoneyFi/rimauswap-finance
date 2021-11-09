@@ -10,20 +10,30 @@ const config: (t: ContextApi['t'], currentLang:string) => MenuEntry[] = (t, curr
     icon: 'HomeIcon',
     href: '/',
   },
-  {
-    label: t('Trade'),
-    icon: 'TradeIcon',
-    items: [
-      {
-        label: t('Swap'),
-        href: '/swap',
-      },
+  // {
+  //   label: t('Trade'),
+  //   icon: 'TradeIcon',
+  //   items: [
+  //     {
+  //       label: t('Swap'),
+  //       href: '/swap',
+  //     },
       // {
       //   label: t('Liquidity'),
       //   href: '/liquidity',
       // },
-    ],
+  //   ],
+  // },
+  {
+    icon: 'TradeIcon',
+    label: t('Buy RIMAU'),
+    href: '/swap',
   },
+  // {
+  //   label: t('Buy RIMAU'),
+  //   icon: 'TradeIcon',
+  //   href: '/buy-rimau',
+  // },
   {
     label: t('RimauSwap v1 (old)'),
     icon: 'FarmIcon',
