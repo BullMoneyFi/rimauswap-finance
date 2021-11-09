@@ -79,10 +79,10 @@ const Farmstitle = () => {
                 justifyContent="center"
                 > 
                 <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'flex-start'}>
-                  <Text textAlign="left" bold fontSize="18px" style={{opacity:0.8}} color="black" mb="10px">
+                  <Text textAlign="left" bold fontSize="20px" fontWeight="700" color="textSubtle" mb="10px">
                   {t('RimauSwap Rebooted')}
                   </Text>
-                  <Text textAlign="left" fontSize="14px" style={{opacity:0.8}} color="black" mb="px">
+                  <Text textAlign="left" fontSize="14px" fontWeight="500"  color="textSubtle" mb="px">
                       {t('RimauSwap is ‘Rebooted’ with improved clarity in serving the underprivileged. Existing liquidity farms have been decommissioned. Existing stakers can unstake from respective farm in the ‘Finished Farms’ listing by toggling the “Live | Finished” button. Unstaked RIMAUs can be staked in Belang Pool to continue earning more RIMAUs.')}
                       
                   </Text>
@@ -105,10 +105,10 @@ const Farmstitle = () => {
                   justifyContent="center"
                   > 
                   <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'flex-start'}>
-                    <Text textAlign="left" bold fontSize="18px" style={{opacity:0.8}} color="black" mb="10px">
+                    <Text textAlign="left" bold fontSize="20px" fontWeight="700"  color="textSubtle" mb="10px">
                       {t('Get RIMAU, Help The Underprivileged')}
                       </Text>
-                    <Text textAlign="left" fontSize="14px" style={{opacity:0.8}} color="black" mb="px">  
+                    <Text textAlign="left" fontSize="14px" fontWeight="500"  color="textSubtle" mb="px">  
                       {t('Acquire RIMAU now & help populate the ‘RIMAU DeFi Farm’. Proceed from DeFi Yield Farming & Portfolio Management is used to fund ongoing ESG charity programs benefitting the underprivileged, sustainably')}
                       <span className="Linkhref" style={{fontWeight:800,paddingLeft: 4, textDecoration: 'underline'}}>
                         <a href={getLink(currentLanguage?.code)} rel="noreferrer" target="_blank">{t('Learn how')} </a>
@@ -130,10 +130,10 @@ const Farmstitle = () => {
                   justifyContent="center"
                   > 
                   <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'flex-start'}>
-                    <Text textAlign="left" bold fontSize="18px" style={{opacity:0.8}} color="black" mb="10px">
+                    <Text textAlign="left" bold fontSize="20px" fontWeight="700"  color="textSubtle" mb="10px">
                       {t('Appreciation-Intensive Tokenomics')}
                     </Text>
-                    <Text textAlign="left" fontSize="14px" style={{opacity:0.8}} color="black" mb="px">
+                    <Text textAlign="left" fontSize="14px" fontWeight="500"  color="textSubtle" mb="px">
                       {t('Unlike other DeFi projects, the native RIMAU token is designed with an Appreciation-Intensive Tokenomics with active token buyback from market for burning, resulting in high value retention, and appreciation over time')}
                         <span className="Linkhref" style={{fontWeight:800,paddingLeft: 4, textDecoration: 'underline'}}>
                         <a href={getLink(currentLanguage?.code)} rel="noreferrer" target="_blank">{t('Learn how')} </a>
