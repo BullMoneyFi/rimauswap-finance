@@ -5,6 +5,7 @@ import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { Link, NavLink } from 'react-router-dom'
+import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain'
 // import useTheme from 'hooks/useTheme'
 // import { SlideSvgDark, SlideSvgLight } from './SlideSvg'
 // import { CompositeImageProps } from './CompositeImage'
@@ -79,11 +80,21 @@ const imageSrc = 'tomcat'
 //   ],
 // }
 
+
+
+
 const Hero = () => {
   const { t } = useTranslation()
   const { isXs, isSm, isMd } = useMatchBreakpoints()
   const { account } = useWeb3React()
   // const { theme } = useTheme()
+
+  const replaceLink = () =>{
+    const text = t('Support our %Vision% by acquiring RIMAU tokens with USDT and stake them in Belang Pool to earn more RIMAUs. USDT is extracted to generate gains through DeFi Yield Farming and Portfolio Management. Proceed is used to fund ESG charity initiatives to help the underprivileged and to buy back RIMAUs from open market and burned.');
+    const vision = text.split("%Vision%");
+    const visionLink = getExternalLinkWithDomain('https://docs-en.rimauswap.finance/#our-vision', 'rimauswap.finance', false);
+    return <span>{vision[0]} <a style={{ textDecoration: 'underline' }} href={visionLink} rel="noreferrer" target="_blank">{t('Vision')}</a> {vision[1]}</span>;
+  }
 
   return (
     <BgWrapper>
@@ -136,7 +147,7 @@ const Hero = () => {
                 opacity: 0.5
                 }}
               mb="20px" color="textSubtle" >
-            {t('Support our Vision by acquiring RIMAU tokens with USDT and stake them in Belang Pool to earn more RIMAUs. USDT is extracted to generate gains through DeFi Yield Farming and Portfolio Management. Proceed is used to fund ESG charity initiatives to help the underprivileged and to buy back RIMAUs from open market and burned.')}
+            { replaceLink()}
           </Text>
           <Flex flexDirection={['column', null, 'row', null]}>
             {!account && <ConnectWalletButton />}
