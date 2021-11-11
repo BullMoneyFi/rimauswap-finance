@@ -64,23 +64,28 @@ const socials: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     //   },
     // ],
   },
+  // {
+  //   label: t("Whitepaper"),
+  //   icon: "WhitepaperIcon",
+  //   items: [
+  //     {
+  //       label: t("BM"),
+  //       href: getExternalLinkWithDomain(`${window.location.origin}/whitepaper/Kertas-Putih-RimauSwap.pdf`, '', false), // "https://www.whitepaper-bm.rimauswap.finance/",
+  //     },
+  //     {
+  //       label: t("EN"),
+  //       href: getExternalLinkWithDomain(`${window.location.origin}/whitepaper/RimauSwap-Whitepaper.pdf`, '', false), // "https://www.whitepaper-en.rimauswap.finance/",
+  //     },
+  //     {
+  //       label: t("ZH"),
+  //       href: getExternalLinkWithDomain(`${window.location.origin}/whitepaper/RimauSwap-Whitepaper-ZH.pdf`, '', false), // "https://whitepaper-zh.rimauswap.finance/",
+  //     },
+  //   ],
+  // },
   {
     label: t("Whitepaper"),
     icon: "WhitepaperIcon",
-    items: [
-      {
-        label: t("BM"),
-        href: getExternalLinkWithDomain(`${window.location.origin}/whitepaper/Kertas-Putih-RimauSwap.pdf`, '', false), // "https://www.whitepaper-bm.rimauswap.finance/",
-      },
-      {
-        label: t("EN"),
-        href: getExternalLinkWithDomain(`${window.location.origin}/whitepaper/RimauSwap-Whitepaper.pdf`, '', false), // "https://www.whitepaper-en.rimauswap.finance/",
-      },
-      {
-        label: t("ZH"),
-        href: getExternalLinkWithDomain(`${window.location.origin}/whitepaper/RimauSwap-Whitepaper-ZH.pdf`, '', false), // "https://whitepaper-zh.rimauswap.finance/",
-      },
-    ],
+    href: getExternalLinkWithDomain(`${window.location.origin}/whitepaper/RimauSwap-Whitepaper.pdf`, '', false), // "https://www.whitepaper-en.rimauswap.finance/",
   },
   {
     label: t("CoinMarketCap Listing"),

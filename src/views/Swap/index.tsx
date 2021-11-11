@@ -349,7 +349,6 @@ export default function Swap({ history }: RouteComponentProps) {
         <Farmstitle/>
       </SwapPageHeader>
     <Page style={{'marginTop': 0, paddingTop: 0}}>
-      
       <AppBody>
         <AppHeader showSubmenu={shwoSubmenu} title={null} subtitle={null} />
         <Wrapper id="swap-page" style={{'marginTop': 0, paddingTop: 0}}>

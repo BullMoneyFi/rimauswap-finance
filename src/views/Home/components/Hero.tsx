@@ -38,9 +38,9 @@ const BgWrapper = styled.div`
     width:100%;
   }
   .right-image{
-    display:none;
     ${({ theme }) => theme.mediaQueries.sm} {
       display:flex;
+      text-align: center
     }
   }
   .margin{
@@ -61,6 +61,7 @@ const BgWrapper = styled.div`
 const BunnyWrapper = styled.div`
   width: 100%;
   animation: ${flyingAnim} 3.5s ease-in-out infinite;
+  text-align: center;
   & img{
     width:75%;
   }
@@ -122,7 +123,7 @@ const Hero = () => {
     textAlign: 'left'
     }}
  color="textSubtle" fontSize={isXs || isSm?  "30px !important" : isMd? "40px !important" : "20px !important"} mb="20px">
-            {t('Support RIMAU DeFi Farm Fundraise')}
+            {t('Support RIMAU DeFi Farm, Help The Underprivileged')}
           </Text>
           <Text
               style={{
@@ -135,7 +136,7 @@ const Hero = () => {
                 opacity: 0.5
                 }}
               mb="20px" color="textSubtle" >
-            {t('Raised fund is used for DeFi Yield Farming and portfolio management, half of the proceed is used to fund charity programs for the underprivileged, sustainably')}
+            {t('Support our Vision by acquiring RIMAU tokens with USDT and stake them in Belang Pool to earn more RIMAUs. USDT is extracted to generate gains through DeFi Yield Farming and Portfolio Management. Proceed is used to fund ESG charity initiatives to help the underprivileged and to buy back RIMAUs from open market and burned.')}
           </Text>
           <Flex flexDirection={['column', null, 'row', null]}>
             {!account && <ConnectWalletButton />}
