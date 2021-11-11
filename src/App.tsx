@@ -90,9 +90,9 @@ const App: React.FC = () => {
             <Route path="/pools">
               <Pools />
             </Route>
-            <Route path="/info">
+            {/* <Route path="/info">
               <Info />
-            </Route>
+            </Route> */}
             {/* <Route path="/lottery">
               <Lottery />
             </Route>
@@ -136,7 +136,7 @@ const App: React.FC = () => {
             <Route exact strict path="/buy-rimau" component={Swap} />
             <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
             <Route exact strict path="/find" component={PoolFinder} />
-            <Route exact strict path="/liquidity" component={Liquidity} />
+            {/* <Route exact strict path="/liquidity" component={Liquidity} /> */}
             <Route exact strict path="/create" component={RedirectToAddLiquidity} />
             <Route exact path="/add" component={AddLiquidity} />
             <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
@@ -148,9 +148,9 @@ const App: React.FC = () => {
             <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
 
             {/* Redirect */}
-            <Route path="/pool">
+            {/* <Route path="/pool">
               <Redirect to="/liquidity" />
-            </Route>
+            </Route> */}
             <Route path="/staking">
               <Redirect to="/pools" />
             </Route>

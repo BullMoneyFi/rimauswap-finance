@@ -3,7 +3,11 @@ import { ContextApi } from 'contexts/Localization/types'
 import { getExternalLinkWithDomain } from 'utils/getExternalLinkWithDomain';
 
 const socials: (t: ContextApi['t']) => MenuEntry[] = (t) => [
-  
+  {
+    label: t("Help"),
+    icon: "QuestionIcon",
+    href: getExternalLinkWithDomain('https://docs-en.rimauswap.finance/how-to-guides/how-to-get-rimau', 'rimauswap.finance', false),
+  },
   {
     label: t("Telegram"),
     icon: "TelegramIcon",

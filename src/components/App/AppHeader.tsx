@@ -38,7 +38,7 @@ const AppHeaderContainer = styled(Flex)`
     }
   }
   ${({ theme }) => theme.mediaQueries.xs} {
-    padding: 24px 0;
+    padding: 12px 0;
     border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
     .heading{
       h2{

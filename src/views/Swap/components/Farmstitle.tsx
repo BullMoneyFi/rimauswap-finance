@@ -33,6 +33,24 @@ const BannerWrapper = styled.div`
       height:100%;
     }
   }
+  .link-href {
+    color: ${({ theme }) => theme.isDark? '#F26E0D': '#F26E0D'}
+  }
+  .info-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .info-text-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
   ${({ theme }) => theme.mediaQueries.md} {
     margin: 10px 0px;
     padding: 25px;
@@ -43,8 +61,8 @@ const BannerWrapper = styled.div`
     }
   }
   ${({ theme }) => theme.mediaQueries.lg} {
-    margin: 10px 0px;
-    padding: 25px;
+    margin: 5px 0px;
+    padding: 15px;
     align-items: flex-start;
     .right-image{
       display:block;
@@ -79,12 +97,11 @@ const Farmstitle = () => {
                 justifyContent="center"
                 > 
                 <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'flex-start'}>
-                  <Text textAlign="left" bold fontSize="20px" fontWeight="700" color="textSubtle" mb="10px">
+                  <Text className="info-text-title" textAlign="left" bold fontSize="20px" fontWeight="700" color="textSubtle" mb="10px">
                   {t('RimauSwap Rebooted')}
                   </Text>
-                  <Text textAlign="left" fontSize="14px" fontWeight="500"  color="textSubtle" mb="px">
+                  <Text className="info-text" textAlign="left" fontSize="14px" fontWeight="500"  color="textSubtle" mb="px">
                       {t('RimauSwap is ‘Rebooted’ with improved clarity in serving the underprivileged. Existing liquidity farms have been decommissioned. Existing stakers can unstake from respective farm in the ‘Finished Farms’ listing by toggling the “Live | Finished” button. Unstaked RIMAUs can be staked in Belang Pool to continue earning more RIMAUs.')}
-                      
                   </Text>
                 </Flex>
               </Flex>
@@ -105,13 +122,13 @@ const Farmstitle = () => {
                   justifyContent="center"
                   > 
                   <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'flex-start'}>
-                    <Text textAlign="left" bold fontSize="20px" fontWeight="700"  color="textSubtle" mb="10px">
+                    <Text className="info-text-title" textAlign="left" bold fontSize="20px" fontWeight="700"  color="textSubtle" mb="10px">
                       {t('Get RIMAU, Help The Underprivileged')}
                       </Text>
-                    <Text textAlign="left" fontSize="14px" fontWeight="500"  color="textSubtle" mb="px">  
-                      {t('Acquire RIMAU now & help populate the ‘RIMAU DeFi Farm’. Proceed from DeFi Yield Farming & Portfolio Management is used to fund ongoing ESG charity programs benefitting the underprivileged, sustainably')}
-                      <span className="Linkhref" style={{fontWeight:800,paddingLeft: 4, textDecoration: 'underline'}}>
-                        <a href={getLink(currentLanguage?.code)} rel="noreferrer" target="_blank">{t('Learn how')} </a>
+                    <Text className="info-text" textAlign="left" fontSize="14px" fontWeight="500"  color="textSubtle" mb="px">  
+                      {t('Acquire RIMAU now & help populate the ‘RIMAU DeFi Farm’. Proceed from DeFi Yield Farming & Portfolio Management is used to fund ongoing ESG charity programs benefitting the underprivileged, sustainably.')}
+                      <span className="link-href" style={{fontWeight:800,paddingLeft: 4, textDecoration: 'underline'}}>
+                        <a href="https://docs-en.rimauswap.finance/#rimau-defi-farm" rel="noreferrer" target="_blank">{t('Learn More')} </a>
                       </span>
                     </Text>
                   </Flex>
@@ -130,13 +147,13 @@ const Farmstitle = () => {
                   justifyContent="center"
                   > 
                   <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'flex-start'}>
-                    <Text textAlign="left" bold fontSize="20px" fontWeight="700"  color="textSubtle" mb="10px">
+                    <Text className="info-text-title" textAlign="left" bold fontSize="20px" fontWeight="700"  color="textSubtle" mb="10px">
                       {t('Appreciation-Intensive Tokenomics')}
                     </Text>
-                    <Text textAlign="left" fontSize="14px" fontWeight="500"  color="textSubtle" mb="px">
-                      {t('Unlike other DeFi projects, the native RIMAU token is designed with an Appreciation-Intensive Tokenomics with active token buyback from market for burning, resulting in high value retention, and appreciation over time')}
-                        <span className="Linkhref" style={{fontWeight:800,paddingLeft: 4, textDecoration: 'underline'}}>
-                        <a href={getLink(currentLanguage?.code)} rel="noreferrer" target="_blank">{t('Learn how')} </a>
+                    <Text className="info-text" textAlign="left" fontSize="14px" fontWeight="500"  color="textSubtle" mb="px">
+                      {t('Unlike other DeFi projects, the native RIMAU token is designed with an Appreciation-Intensive Tokenomics with active token buyback from market for burning, resulting in high value retention, and appreciation over time.')}
+                        <span className="link-href" style={{fontWeight:800,paddingLeft: 4, textDecoration: 'underline'}}>
+                        <a href="https://docs-en.rimauswap.finance/rimau-tokenomics#appreciation-intensive-tokenomics" rel="noreferrer" target="_blank">{t('Learn More')} </a>
                       </span>
                     </Text>
                   </Flex>

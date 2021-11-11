@@ -92,11 +92,11 @@ const config: (t: ContextApi['t'], currentLang:string) => MenuEntry[] = (t, curr
   //   ],
   // },
   // info
-  {
-    label: `${t('Info')}`,
-    icon: 'InfoIcon',
-    href: '/info'
-  },
+  // {
+  //   label: `${t('Info')}`,
+  //   icon: 'InfoIcon',
+  //   href: '/info'
+  // },
   // {
   //   label: t('Info'),
   //   icon: 'InfoIcon',
@@ -134,10 +134,10 @@ const config: (t: ContextApi['t'], currentLang:string) => MenuEntry[] = (t, curr
         //   }
         // ]
       },
-      {
-        label: t('Liquidity Lock'),
-        href: getExternalLinkWithDomain('https://docs-en.rimauswap.finance/amm-launch#liquidity-lock', 'rimauswap.finance', false),
-      },
+      // {
+      //   label: t('Liquidity Lock'),
+      //   href: getExternalLinkWithDomain('https://docs-en.rimauswap.finance/amm-launch#liquidity-lock', 'rimauswap.finance', false),
+      // },
       // {
       //   label: t('Buy Rimau'),
       //   href: 'https://rimauswap.finance/swap?inputCurrency=0x2170ed0880ac9a755fd29b2688956bd959f933f8&outputCurrency=0x098dCbf3518856E45BB4e65E7fCc7C5Ff4a2C16e',

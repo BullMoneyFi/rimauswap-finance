@@ -30,7 +30,6 @@ import { ApprovalState, useApproveCallbackFromTrade } from '../../hooks/useAppro
 import { useSwapCallback } from '../../hooks/useSwapCallback'
 import useWrapCallback, { WrapType } from '../../hooks/useWrapCallback'
 import { Field } from '../../state/swap/actions'
-import PageHeader from '../../components/PageHeader'
 import {
   useDefaultsFromURLSearch,
   useDerivedSwapInfo,
@@ -44,21 +43,25 @@ import CircleLoader from '../../components/Loader/CircleLoader'
 import Page from '../Page'
 import SwapWarningModal from './components/SwapWarningModal'
 import Farmstitle from './components/Farmstitle'
+import SwapPageHeader from './components/SwapPageHeader'
 
 const Label = styled(Text)`
   font-size: 12px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.textSubtle};
 `
-const StyledHeader = styled(PageHeader)`
+const StyledHeader = styled(SwapPageHeader)`
   max-height: max-content;
   overflow: hidden;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 36px;
+  color: #202020;
   & div{
-    padding-top:16px;
-    padding-bottom:16px;
-  }
-  ${({ theme }) => theme.mediaQueries.md} {
-    display:none;
+    padding-top:5px;
+    padding-bottom:5px;
   }
 `
 
@@ -332,18 +335,24 @@ export default function Swap({ history }: RouteComponentProps) {
   return (
     <>
      <StyledHeader>
-        <Heading as="h1" fontSize="24px !important" scale="md">
-          {t('Trade')}
+        <Heading as="h1" fontSize="30" style={{
+          fontFamily: 'Inter',
+          fontStyle: 'normal',
+          fontWeight: 'bold',
+          fontSize: 30,
+          lineHeight: '36px'
+        }} scale="md" color="textSubtle">
+          {t('RIMAU Defi Farm')}
         </Heading>
       </StyledHeader>
-      <PageHeader>
-        <Farmstitle />
-      </PageHeader>
-    <Page>
+      <SwapPageHeader>
+        <Farmstitle/>
+      </SwapPageHeader>
+    <Page style={{'marginTop': 0, paddingTop: 0}}>
       
       <AppBody>
         <AppHeader showSubmenu={shwoSubmenu} title={null} subtitle={null} />
-        <Wrapper id="swap-page">
+        <Wrapper id="swap-page" style={{'marginTop': 0, paddingTop: 0}}>
           <AutoColumn gap={isMobile?'sm':'md'}>
             <CurrencyInputPanel
               isSwap={isShow}

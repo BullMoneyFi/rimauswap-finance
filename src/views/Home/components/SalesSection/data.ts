@@ -6,8 +6,13 @@ export const swapSectionData: SalesSectionProps = {
   reverse: true,
   primaryButton: {
     to: '/swap',
-    text: 'Get RIMAU token',
+    text: 'Get RIMAU Token',
     external: false,
+  },
+  secondaryButton: {
+    to: 'https://docs-en.rimauswap.finance/rimau-tokenomics#appreciation-intensive-tokenomics',
+    text: 'Learn',
+    external: true,
   },
   images: {
     path: '/images/home/decentralized/',
@@ -20,13 +25,18 @@ export const swapSectionData: SalesSectionProps = {
 }
 
 export const earnSectionData: SalesSectionProps = {
-  headingText: 'Self-sustainable Contribution For The Underprivileged',
+  headingText: 'Self-sustainable Contribution to The Underprivileged',
   bodyText: 'As RIMAU DeFi Farm grows, so is the farm proceed and continuous funding of the RimauSwap ESG charity programs: FeedUp! SkillUp! and StartUp!',
   reverse: false,
   primaryButton: {
     to: '/swap',
-    text: 'Get RIMAU token',
+    text: 'Get RIMAU Token',
     external: false,
+  },
+  secondaryButton: {
+    to: 'https://docs-en.rimauswap.finance/rimau-esg-drive',
+    text: 'Learn',
+    external: true,
   },
   images: {
     path: '/images/home/benefitting/',
@@ -44,14 +54,14 @@ export const cakeSectionData: SalesSectionProps = {
   reverse: false,
   primaryButton: {
     to: '/swap',
-    text: 'Get RIMAU token',
+    text: 'Get RIMAU Token',
     external: false,
   },
-  // secondaryButton: {
-  //   to: 'https://docs.pancakeswap.finance/tokenomics/cake',
-  //   text: 'Learn',
-  //   external: true,
-  // },
+  secondaryButton: {
+    to: 'https://docs-en.rimauswap.finance/#our-vision',
+    text: 'Learn',
+    external: true,
+  },
   images: {
     path: '/images/home/environmental/',
     src: 'environmental',

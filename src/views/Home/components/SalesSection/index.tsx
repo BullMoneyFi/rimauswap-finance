@@ -2,6 +2,7 @@ import React from 'react'
 import { Flex, Text, Button, Link, useMatchBreakpoints } from '@rimauswap-libs/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
+import { NavLink } from 'react-router-dom'
 import { CompositeImageProps, getImageUrl, getSrcSet } from '../CompositeImage'
 import PurpleWordHeading from '../PurpleWordHeading'
 
@@ -21,7 +22,7 @@ const SectionText = styled.div`
     margin-left: 0;
     width: 100%;
   }
-`
+  `
 const SectionButtons = styled(Flex)`
   padding-left:0;
   *{
@@ -31,6 +32,12 @@ const SectionButtons = styled(Flex)`
     padding-left:78px;
     *{
       width:auto;
+    }
+  }
+  .margin{
+    margin-left:5px;
+    ${({ theme }) => theme.mediaQueries.sm} {
+      margin-left:8px;
     }
   }
 `
@@ -70,9 +77,33 @@ const SalesSection: React.FC<SalesSectionProps> = (props) => {
           alignSelf={['flex-start', null, null, 'center']}
         >
           <SectionText>
-            <img style={{position: 'absolute', top: 0, left: 0}} src={`${imagePath}${imageSrc}.svg`}  alt="text" />
-            <PurpleWordHeading color="textSubtle"  fontSize={isXs || isSm?  "25px !important" : isMd? "30px !important" : "40px !important"} text={headingTranslatedText} />
-            <Text color="textSubtle" style={{opacity:0.5}} fontSize="16px" mb="20px">
+            <img style={{position: 'absolute', top: 15, left: 25, width: '21%'}} src={`${imagePath}${imageSrc}.svg`}  alt="text" />
+            {/* <PurpleWordHeading color="textSubtle"  fontSize={isXs || isSm?  "25px !important" : isMd? "30px !important" : "40px !important"} text={headingTranslatedText} /> */}
+            <Text
+              style={{
+              fontFamily: 'Inter',
+              fontSize: '20px',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              lineHeight: '24px',
+              letterSpacing: '0em',
+              textAlign: 'left',
+              }} mb="20px" color="textSubtle" >
+      {headingTranslatedText}
+      {/* <span style={{ color: theme.colors.secondary }}>{firstWord} </span>
+      {remainingWords} */}
+    </Text>
+            <Text color="textSubtle" 
+              style={{
+                fontFamily: 'Inter',
+                fontSize: '18px',
+                fontStyle: 'normal',
+                fontWeight: 500,
+                lineHeight: '21px',
+                textAlign: 'left',
+                opacity: 0.5
+                }}
+              fontSize="16px" mb="20px">
               {bodyTranslatedText}
             </Text>
           </SectionText>
@@ -88,9 +119,9 @@ const SalesSection: React.FC<SalesSectionProps> = (props) => {
               </Link>
               {
                 secondaryButton?
-                  <Link external={secondaryButton.external} href={secondaryButton.to}>
-                    {t(secondaryButton.text)}
-                  </Link>
+                  <NavLink className="margin" exact  to={{pathname:secondaryButton.to}}  target="_blank">
+                    <Button scale="md" external variant="secondary">{t('Learn More')}</Button>
+                  </NavLink>
                 :null
               }
           </SectionButtons>
