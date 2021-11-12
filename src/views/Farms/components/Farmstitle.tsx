@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Text, useMatchBreakpoints } from '@rimauswap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 
 
 const BannerMain = styled.div`
@@ -53,10 +53,27 @@ const BannerWrapper = styled.div`
 const Farmstitle = () => {
   const { t, currentLanguage } = useTranslation()
   const { isXs, isSm, isMd } = useMatchBreakpoints()
+  const theme = useTheme()
  
   const getLink = (currentLang) =>{
     return currentLang === 'en' ? 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau' : currentLang === 'zh-cn' ? 'https://docs-zh.rimauswap.finance/products/rimau-yield-farming' : currentLang === 'my' || currentLang === 'id' ? 'https://docs-bm.rimauswap.finance/produks/berladang-farming' : 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau'
    }
+
+   const getText1 = () => {
+    const text = t('RimauSwap has been ‘%Rebooted%’ with enhanced clarity. Existing RimauSwap V1 farms have been decommissioned (RIMAU reward payout stopped).');
+    const headerText = text.split("%Rebooted%");
+    const headerLink = "https://rimauswap.farm/" // currentLanguage.code === 'en' ? 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau' : (currentLanguage.code === 'my' || currentLanguage.code === 'id') ? 'https://docs-bm.rimauswap.finance/produks/berladang-farming' :  currentLanguage.code === 'zh-cn' ? 'https://docs-zh.rimauswap.finance/products/rimau-yield-farming' : 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau';
+
+    return <span>{headerText[0]} <a style={{color: theme.colors.textSubtle, textDecoration: 'underline'}} href={headerLink} rel="noreferrer" target="_blank">RimauSwap Rebooted</a> {headerText[1]} </span>;
+  }
+
+  const getText2 = () => {
+    const text = t('Existing stakers can unstake from decommissioned farms listed below. You may stake your unstaked RIMAU tokens in our %Belang Pool% to continue earning RIMAUs.');
+    const headerText = text.split("%Belang Pool%");
+    const headerLink = "https://rimauswap.farm/pools" // currentLanguage.code === 'en' ? 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau' : (currentLanguage.code === 'my' || currentLanguage.code === 'id') ? 'https://docs-bm.rimauswap.finance/produks/berladang-farming' :  currentLanguage.code === 'zh-cn' ? 'https://docs-zh.rimauswap.finance/products/rimau-yield-farming' : 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau';
+
+    return <span>{headerText[0]} <a style={{color: theme.colors.textSubtle, textDecoration: 'underline'}} href={headerLink} rel="noreferrer" target="_blank">RimauSwap Rebooted</a> {headerText[1]} </span>;
+  }
 
   return (
     <BannerMain>
@@ -65,56 +82,6 @@ const Farmstitle = () => {
           alignItems={['flex-start', null, null, 'flex-start']}
           justifyContent="flex-start"
           > 
-          <Flex
-          flexDirection="column"
-          width="100%"
-          mr={[null, null, null, '10px']}
-          flex={["100", "100", "100", "30"]}>
-            <BannerWrapper>
-              <Flex
-                position="relative"
-                flexDirection='row'
-                alignItems={['center', null, null, 'center']}
-                justifyContent="center"
-                > 
-                <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'center'}>
-                  <Text textAlign="left" bold fontSize="18px" style={{opacity:0.8}} color="black" mb="10px">
-                  {t('Earn RIMAU')}
-                  </Text>
-                  <Text textAlign="left" fontSize="14px" style={{opacity:0.8}} color="black" mb="px">
-                      {t('Earn RIMAU. Add liquidity & stake the LP token to farm RIMAU tokens.')}
-                      <span className="Linkhref" style={{fontWeight:800,paddingLeft: 4, textDecoration: 'underline'}}>
-                      <a href={getLink(currentLanguage?.code)} rel="noreferrer" target="_blank">{t('Learn how')} </a>
-                    </span>
-                  </Text>
-                </Flex>
-              </Flex>
-            </BannerWrapper> 
-          </Flex>
-          <Flex
-          flexDirection="column"
-          width="100%"
-          ml={[null, null, null, '10px']}
-          mr={[null, null, null, '10px']}
-          flex={["100", "100", "100", "30"]}>
-            <BannerWrapper>
-              <Flex
-                position="relative"
-                flexDirection={['row', null, null, 'row']}
-                alignItems={['center', null, null, 'center']}
-                justifyContent="center"
-                > 
-                <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'center'}>
-                  <Text textAlign="left" bold fontSize="18px" style={{opacity:0.8}} color="black" mb="10px">
-                    {t('Localized DEX')}
-                    </Text>
-                  <Text textAlign="left" fontSize="14px" style={{opacity:0.8}} color="black" mb="px">  
-                    {t('RimauSwap is your friendly localized DEX and DeFi Farm on Binance Smart Chain.')}
-                  </Text>
-                </Flex>
-              </Flex>
-            </BannerWrapper> 
-          </Flex>
           <Flex
           flexDirection="column"
           width="100%"
@@ -129,14 +96,18 @@ const Farmstitle = () => {
                 justifyContent="center"
                 > 
                 <Flex flex="1" width="100%" flexDirection="column" alignItems={isXs || isSm || isMd ? "flex-start" :'center'}>
-                  <Text textAlign="left" bold fontSize="18px" style={{opacity:0.8}} color="black" mb="10px">
+                  {/* <Text textAlign="left" bold fontSize="18px" style={{opacity:0.8}} color="black" mb="10px">
                     {t('Appreciation-Intensive Tokenomics')}
-                  </Text>
+                  </Text> */}
                   <Text textAlign="left" fontSize="14px" style={{opacity:0.8}} color="black" mb="px">
-                    {t('Unlike other DeFi projects, the native RIMAU token is designed with an Appreciation-Intensive Tokenomics, resulting in high value retention, and appreciation over time.')}
-                      <span className="Linkhref" style={{fontWeight:800,paddingLeft: 4, textDecoration: 'underline'}}>
-                      <a href={getLink(currentLanguage?.code)} rel="noreferrer" target="_blank">{t('Learn how')} </a>
-                    </span>
+                    {
+                      getText1()
+                    }
+                  </Text>
+                  <Text marginTop="12px" textAlign="left" fontSize="14px" style={{opacity:0.8}} color="black" mb="px">
+                    {
+                      getText2()
+                    }
                   </Text>
                 </Flex>
               </Flex>

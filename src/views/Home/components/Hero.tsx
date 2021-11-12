@@ -1,10 +1,9 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
-import { Flex, Heading, Text, Button, useMatchBreakpoints } from '@rimauswap-libs/uikit'
+import styled, { keyframes, useTheme } from 'styled-components'
+import { Flex, Heading, Text, Button, useMatchBreakpoints, LinkExternal, Link } from '@rimauswap-libs/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import { NavLink } from 'react-router-dom'
 // import useTheme from 'hooks/useTheme'
 // import { SlideSvgDark, SlideSvgLight } from './SlideSvg'
 // import { CompositeImageProps } from './CompositeImage'
@@ -79,12 +78,50 @@ const imageSrc = 'tomcat'
 //   ],
 // }
 
+
 const Hero = () => {
   const { t } = useTranslation()
   const { isXs, isSm, isMd } = useMatchBreakpoints()
   const { account } = useWeb3React()
-  // const { theme } = useTheme()
+  
+  const theme  = useTheme()
 
+  const replaceLink = (key:string, links: string[]) => {
+    const texts = [];
+    let keyText = t(key);
+    const generatedLinks = [];
+    links.forEach(l => {
+      texts.push(keyText.split(l)[0])
+      keyText = keyText.split(l)[1]
+      generatedLinks.push(<a href={l}>log in</a>)
+    })
+    texts.push(keyText)
+    return  <div>{texts.map((txt, i) => txt + generatedLinks[i] )}</div>;
+  }
+
+  const getRebootedHeader = () => {
+    const text = t('RimauSwap V1 has been enhanced to %RimauSwap Rebooted%.');
+    const headerText = text.split("%RimauSwap Rebooted%");
+    const headerLink = "https://rimauswap.farm/" // currentLanguage.code === 'en' ? 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau' : (currentLanguage.code === 'my' || currentLanguage.code === 'id') ? 'https://docs-bm.rimauswap.finance/produks/berladang-farming' :  currentLanguage.code === 'zh-cn' ? 'https://docs-zh.rimauswap.finance/products/rimau-yield-farming' : 'https://docs-en.rimauswap.finance/products/how-to-farm-rimau';
+
+    return <span>{headerText[0]} <a style={{color: theme.colors.textSubtle, textDecoration: 'underline'}} href={headerLink} rel="noreferrer" target="_blank">RimauSwap Rebooted</a>.</span>;
+  }
+
+  // const getRebootedText = () => {
+
+  //   const text = t('RimauSwap V1 has been enhanced to %RimauSwap Rebooted%.');
+  //   const rebootedText = text.split("%RimauSwap Rebooted%");
+  //   const rebootedLink = "https://docs-en.rimauswap.finance/"
+
+  //   return <span>{rebootedText[0]} <a style={{color: theme.colors.textSubtle, textDecoration: 'underline'}} href={headerLink} rel="noreferrer" target="_blank">RimauSwap Rebooted</a>.</span>;
+
+  //   <Text textAlign="left" fontSize="16px" style={{opacity:0.5}} color="textSubtle" mb="20px">
+  //   {t('We have re-strategize the RimauSwap Public Benefit Project to make it even better. Now we can realize the project vision sooner with clearer ESG Initiatives. [Learn More]')}
+  // </Text>
+
+  // }
+
+  
   return (
     <BgWrapper>
       <Flex
@@ -97,21 +134,17 @@ const Hero = () => {
           flex={[null, null, null, '55']}
           alignItems={['center', null, null, 'center']}
           flexDirection="column">
-          <Heading scale="xxl" color="textSubtle" fontSize={isXs || isSm?  "30px !important" : isMd? "40px !important" : "50px !important"} mb="20px">
-            {t('Switch over to RimauSwap. Let’s show the world DeFi can do good.')}
+          <Heading scale="xxl" color="textSubtle" fontSize={isXs || isSm?  "30px !important" : isMd? "40px !important" : "30px !important"} mb="20px">
+            { getRebootedHeader()}
           </Heading>
           <Text textAlign="left" fontSize="16px" style={{opacity:0.5}} color="textSubtle" mb="20px">
-            {t('DEX Built For Global Crypto Markets in a sustainable manner through DeFi yield farming.')}
+            {t('We have re-strategize the RimauSwap Public Benefit Project to make it even better. Now we can realize the project vision sooner with clearer ESG Initiatives.')}
           </Text>
-          <Flex flexDirection={['column', null, 'row', null]}>
-            {!account && <ConnectWalletButton />}
-            <NavLink className="margin" to="/swap">
-              <Button scale="md" variant="secondary">{t('Trade Now')}</Button>
-            </NavLink>
-          
-            <NavLink className="margin" to="/swap?inputCurrency=0x2170ed0880ac9a755fd29b2688956bd959f933f8&outputCurrency=0x098dCbf3518856E45BB4e65E7fCc7C5Ff4a2C16e">
-              <Button scale="md" variant="danger">{t('Get RIMAU Token')}</Button>
-            </NavLink>
+          <Flex flexDirection={['row', null, 'row', null]}>
+          <LinkExternal href='https://docs-en.rimauswap.finance/'>Learn More</LinkExternal>
+            <Link external href="https://rimauswap.farm/buy-rimau">
+                <Button scale="md" variant="danger">{t('Get RIMAU Token')}</Button>
+            </Link>
           </Flex>
         </Flex>
         <Flex

@@ -78,48 +78,9 @@ const Home: React.FC = () => {
           :null
         }
         {/* <HomeBanner  /> */}
-        <Welcome />
+        {/* <Welcome /> */}
         <Hero />
       </StyledHeroSection>
-      <PageSection
-        className="mobile-container"
-        innerProps={{ style: HomeSectionContainerStyles }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        {/* <OuterWedgeWrapper>
-          <InnerWedgeWrapper width="150%" top fill={theme.colors.background}>
-            <WedgeTopRight />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper> */}
-        <SalesSection {...earnSectionData} />
-      </PageSection>
-      <PageSection
-        className="mobile-container"
-        innerProps={{ style: HomeSectionContainerStyles }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        {/* <OuterWedgeWrapper>
-          <InnerWedgeWrapper top fill={theme.isDark ? '#201335' : '#D8CBED'}>
-            <WedgeTopLeft />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper> */}
-        <SalesSection {...swapSectionData} />
-      </PageSection>
-      <PageSection
-        className="mobile-container"
-        innerProps={{ style: HomeSectionContainerStyles }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        {/* <OuterWedgeWrapper>
-          <InnerWedgeWrapper width="150%" top fill={theme.colors.background}>
-            <WedgeTopRight />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper> */}
-        <SalesSection {...cakeSectionData} />
-      </PageSection>
     </>
   )
 }
