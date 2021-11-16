@@ -133,7 +133,7 @@ const Hero = () => {
     letterSpacing: '0em',
     textAlign: 'left'
     }}
- color="textSubtle" fontSize={isXs || isSm?  "30px !important" : isMd? "40px !important" : "20px !important"} mb="20px">
+ color="textSubtle" mb="20px">
             {t('Support RIMAU DeFi Farm, Help The Underprivileged')}
           </Text>
           <Text
@@ -142,7 +142,7 @@ const Hero = () => {
                 fontSize: '18px',
                 fontStyle: 'normal',
                 fontWeight: 500,
-                lineHeight: '21px',
+                lineHeight: '22px',
                 textAlign: 'left',
                 opacity: 0.5
                 }}
