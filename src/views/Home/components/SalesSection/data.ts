@@ -4,11 +4,11 @@ export const swapSectionData: SalesSectionProps = {
   headingText: 'Appreciation Intensive Tokenomics',
   bodyText: 'Half of the proceed from RIMAU DeFi Farm is used to actively buy RIMAU from the market & burned. Reducing circulating supply results in high value retention and appreciation over time.',
   reverse: true,
-  primaryButton: {
-    to: '/swap',
-    text: 'Get RIMAU Token',
-    external: false,
-  },
+  // primaryButton: {
+  //   to: '/swap',
+  //   text: 'Get RIMAU Token',
+  //   external: false,
+  // },
   secondaryButton: {
     to: 'https://docs-en.rimauswap.finance/rimau-tokenomics#appreciation-intensive-tokenomics',
     text: 'Learn',
@@ -28,11 +28,11 @@ export const earnSectionData: SalesSectionProps = {
   headingText: 'Self-sustainable Contribution to The Underprivileged',
   bodyText: 'As RIMAU DeFi Farm grows, so is the farm proceed and continuous funding of the RimauSwap ESG charity programs: FeedUp! SkillUp! and StartUp!',
   reverse: false,
-  primaryButton: {
-    to: '/swap',
-    text: 'Get RIMAU Token',
-    external: false,
-  },
+  // primaryButton: {
+  //   to: '/swap',
+  //   text: 'Get RIMAU Token',
+  //   external: false,
+  // },
   secondaryButton: {
     to: 'https://docs-en.rimauswap.finance/rimau-esg-drive',
     text: 'Learn',

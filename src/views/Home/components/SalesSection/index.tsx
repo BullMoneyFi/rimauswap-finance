@@ -47,7 +47,7 @@ export interface SalesSectionProps {
   headingText: string
   bodyText: string
   reverse: boolean
-  primaryButton: SalesSectionButton
+  primaryButton?: SalesSectionButton
   secondaryButton?: SalesSectionButton
   images: CompositeImageProps
 }
@@ -108,6 +108,7 @@ const SalesSection: React.FC<SalesSectionProps> = (props) => {
             </Text>
           </SectionText>
           <SectionButtons>
+            {primaryButton? 
             <Link mr="16px" external={primaryButton.external} href={primaryButton.to}>
                 <Button>
                   <img style={{ width: 32, marginRight: 10, border: '2px solid #ef932170', borderRadius: '100%' }} src={`${'/images/icon.svg'}`}  alt="text" />
@@ -116,7 +117,7 @@ const SalesSection: React.FC<SalesSectionProps> = (props) => {
                     {t(primaryButton.text)}
                   </Text>
                 </Button>
-              </Link>
+              </Link>: null}
               {
                 secondaryButton?
                   <NavLink className="margin" exact  to={{pathname:secondaryButton.to}}  target="_blank">
