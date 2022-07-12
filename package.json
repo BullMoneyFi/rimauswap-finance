@@ -1,7 +1,7 @@
 {
   "name": "rimauswap-frontend",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
